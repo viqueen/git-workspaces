@@ -1,0 +1,30 @@
+{
+  "name": "git-devbox",
+  "version": "1.0.0",
+  "description": "git cli extensions",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "format:check": "prettier --check .",
+    "format": "prettier --check --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viqueen/git-devbox.git"
+  },
+  "keywords": [
+    "git",
+    "cli",
+    "extensions"
+  ],
+  "author": "Hasnae R.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/viqueen/git-devbox/issues"
+  },
+  "homepage": "https://github.com/viqueen/git-devbox#readme",
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  }
+}
