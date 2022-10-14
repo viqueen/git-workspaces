@@ -7,8 +7,6 @@
 
 #### from stable
 
-- [ ] with homebrew
-
 - with **npm** (not recommended)
 
 ```bash
