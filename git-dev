@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+_with_arguments (){
+    count=${1};
+    shift;
+    if [[ "$#" -lt ${count} ]]; then
+        echo "missing arguments, expected at least ${count} but received $#";
+        exit 1;
+    fi
+}
+
+_with_arguments 1 "$@"
+git_command=$1
+shift;
+
+node "./dist/git-${git_command}.js" "$@"
