@@ -5,8 +5,24 @@
 
 ### install it
 
-- [ ] with npm
+#### from stable
+
 - [ ] with homebrew
+
+- with **npm** (not recommended)
+
+```bash
+npm install git-devbox -g
+```
+
+#### from source
+
+```bash
+git clone https://github.com/viqueen/git-devbox.git
+cd git-devbox
+npm install
+npm link
+```
 
 ### use it
 

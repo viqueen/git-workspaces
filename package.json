@@ -2,6 +2,7 @@
   "name": "git-devbox",
   "version": "1.0.0",
   "description": "git cli extensions",
+  "preferGlobal": false,
   "bin": {
     "git-recent": "dist/git-recent.js"
   },
