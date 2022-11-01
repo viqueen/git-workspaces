@@ -4,6 +4,7 @@
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
+    "git-devbox": "dist/git-devbox.js",
     "git-recent": "dist/git-recent.js"
   },
   "scripts": {
