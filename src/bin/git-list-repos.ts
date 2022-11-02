@@ -1,12 +1,12 @@
 #! /usr/bin/env node
 
-import { config, WithRegistryConfiguration, withRegistry } from '../config';
 import { Command } from 'commander';
 import { leveldbStore } from '../data/leveldb-store';
 import { Item } from '../data/types';
 import { prompt } from 'inquirer';
 import * as path from 'path';
 import { spawn } from 'child_process';
+import { configuration, Configuration } from '../data/configuration';
 
 const switchRepoQuestion = async (items: Item[]) => {
     if (items.length === 0) return undefined;
@@ -22,7 +22,7 @@ const switchRepoQuestion = async (items: Item[]) => {
 };
 
 const switchRepoAnswer =
-    ({ workspacesRoot }: Pick<WithRegistryConfiguration, 'workspacesRoot'>) =>
+    ({ workspacesRoot }: Pick<Configuration, 'workspacesRoot'>) =>
     async (answer: { selectedRepo: string } | undefined) => {
         if (!answer) return;
         const target = path.resolve(workspacesRoot, answer.selectedRepo);
@@ -35,7 +35,7 @@ const listRepos = ({
     registry,
     workspacesDefault,
     workspacesRoot
-}: WithRegistryConfiguration) => {
+}: Configuration) => {
     const program = new Command();
     program.option(
         '-w, --workspace <name>',
@@ -54,4 +54,4 @@ const listRepos = ({
     program.parse(process.argv);
 };
 
-config().then(withRegistry).then(listRepos);
+configuration().then(listRepos);

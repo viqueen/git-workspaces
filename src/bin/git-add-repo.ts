@@ -1,14 +1,11 @@
 #! /usr/bin/env node
 
-import { config, WithRegistryConfiguration, withRegistry } from '../config';
 import { Command } from 'commander';
 import { fromInput } from '../data';
 import { leveldbStore } from '../data/leveldb-store';
+import { configuration, Configuration } from '../data/configuration';
 
-const addRepo = ({
-    registry,
-    workspacesDefault
-}: WithRegistryConfiguration) => {
+const addRepo = ({ registry, workspacesDefault }: Configuration) => {
     const program = new Command();
     program.option(
         '-w, --workspace <name>',
@@ -27,4 +24,4 @@ const addRepo = ({
     program.parse(process.argv);
 };
 
-config().then(withRegistry).then(addRepo);
+configuration().then(addRepo);
