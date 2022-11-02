@@ -18,5 +18,6 @@ export const config = async (): Promise<Configuration> => {
             prev[camelCaseKey] = current[1] as string;
             return prev;
         }, {} as Record<string, string>);
+
     return configuration as Configuration;
 };

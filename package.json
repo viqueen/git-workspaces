@@ -1,6 +1,6 @@
 {
   "name": "git-devbox",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -9,6 +9,8 @@
   },
   "scripts": {
     "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "format:check": "prettier --check .",
     "format": "prettier --check --write ."
   },
@@ -16,6 +18,9 @@
     "type": "git",
     "url": "git+https://github.com/viqueen/git-devbox.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "git",
     "cli",
@@ -29,8 +34,12 @@
   "homepage": "https://github.com/viqueen/git-devbox#readme",
   "devDependencies": {
     "@types/inquirer": "^8.2.4",
+    "@types/jest": "^29.2.1",
     "@types/lodash": "^4.14.187",
+    "jest": "^29.2.2",
     "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
