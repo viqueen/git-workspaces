@@ -4,8 +4,8 @@
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
-    "git-devbox": "dist/git-devbox.js",
-    "git-recent": "dist/git-recent.js"
+    "git-devbox": "dist/bin/git-devbox.js",
+    "git-recent": "dist/bin/git-recent.js"
   },
   "scripts": {
     "build": "tsc",
