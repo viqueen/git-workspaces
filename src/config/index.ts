@@ -1,5 +1,6 @@
 import camelCase from 'lodash/camelCase';
 import simpleGit, { GitConfigScope } from 'simple-git';
+import path from 'path';
 
 export type Configuration = {
     workspacesRoot: string;
@@ -20,4 +21,14 @@ export const config = async (): Promise<Configuration> => {
         }, {} as Record<string, string>);
 
     return configuration as Configuration;
+};
+
+export type WithRegistryConfiguration = Configuration & { registry: string };
+
+export const withRegistry = async (
+    configuration: Configuration
+): Promise<WithRegistryConfiguration> => {
+    const { workspacesRoot } = configuration;
+    const registry = path.resolve(workspacesRoot, '.git-devbox');
+    return { ...configuration, registry };
 };

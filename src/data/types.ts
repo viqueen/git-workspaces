@@ -9,3 +9,7 @@ export type Item = Input & {
     slug: string;
     ID: string;
 };
+
+export interface ItemFilter {
+    (item: Item): boolean;
+}
