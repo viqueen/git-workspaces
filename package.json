@@ -29,11 +29,14 @@
   "homepage": "https://github.com/viqueen/git-devbox#readme",
   "devDependencies": {
     "@types/inquirer": "^8.2.4",
+    "@types/lodash": "^4.14.187",
     "prettier": "^2.7.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "commander": "^9.4.1",
     "inquirer": "^8.2.4",
+    "lodash": "^4.17.21",
     "simple-git": "^3.14.1"
   }
 }

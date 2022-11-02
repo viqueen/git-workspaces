@@ -4,6 +4,7 @@ import simpleGit, { GitConfigScope } from 'simple-git';
 import { prompt } from 'inquirer';
 import * as path from 'path';
 import * as os from 'os';
+import { Configuration } from '../config';
 
 const configureGitDevboxQuestions = async () => {
     return prompt([
@@ -32,16 +33,7 @@ const configureGitDevboxQuestions = async () => {
     ]);
 };
 
-const configureGitDevboxAnswers = async (
-    answer:
-        | {
-              workspacesRoot: string;
-              workspacesDefault: string;
-              githubUsername: string;
-              githubPersonalToken: string;
-          }
-        | undefined
-) => {
+const configureGitDevboxAnswers = async (answer: Configuration | undefined) => {
     if (!answer) return;
     simpleGit().addConfig(
         'devbox.workspaces.root',
