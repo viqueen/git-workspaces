@@ -4,7 +4,8 @@ import LevelDOWN from 'leveldown';
 
 export type Registry = {
     add: (item: Item) => Promise<void>;
-    list: (filter: ItemFilter) => Promise<Item[]>;
+    fetch: (id: string) => Promise<Item | undefined>;
+    list: (filter?: ItemFilter) => Promise<Item[]>;
 };
 
 export const leveldbRegistry = (registryPath: string): Registry => {
@@ -21,7 +22,17 @@ export const leveldbRegistry = (registryPath: string): Registry => {
         return withLeveldb<void>((r) => r.put(item.ID, JSON.stringify(item)));
     };
 
-    const list = async (filter: ItemFilter): Promise<Item[]> => {
+    const fetch = async (id: string): Promise<Item | undefined> => {
+        return withLeveldb<Item>(async (r) => {
+            try {
+                return await r.get(id).then(JSON.parse);
+            } catch (error) {
+                return undefined;
+            }
+        });
+    };
+
+    const list = async (filter: ItemFilter = () => true): Promise<Item[]> => {
         return withLeveldb<Item[]>((r) => {
             return new Promise<Item[]>((resolve, reject) => {
                 const items: Item[] = [];
@@ -37,5 +48,5 @@ export const leveldbRegistry = (registryPath: string): Registry => {
         });
     };
 
-    return { add, list };
+    return { add, fetch, list };
 };
