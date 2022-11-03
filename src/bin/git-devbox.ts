@@ -4,6 +4,7 @@ import simpleGit, { GitConfigScope } from 'simple-git';
 import { prompt } from 'inquirer';
 import * as path from 'path';
 import * as os from 'os';
+import { Configuration } from '../lib';
 
 const configureGitDevboxQuestions = async () => {
     return prompt([
@@ -33,14 +34,7 @@ const configureGitDevboxQuestions = async () => {
 };
 
 const configureGitDevboxAnswers = async (
-    answer:
-        | {
-              workspacesRoot: string;
-              workspacesDefault: string;
-              githubUsername: string;
-              githubPersonalToken: string;
-          }
-        | undefined
+    answer: Omit<Configuration, 'registry'> | undefined
 ) => {
     if (!answer) return;
     simpleGit().addConfig(
