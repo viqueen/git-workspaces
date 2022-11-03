@@ -4,8 +4,12 @@ import { Item } from '../data/types';
 import { prompt } from 'inquirer';
 import * as path from 'path';
 import { spawn } from 'child_process';
-import { Configuration, getConfiguration } from '../lib/get-configuration';
-import { withProgram, WithProgram } from '../lib/with-program';
+import {
+    Configuration,
+    getConfiguration,
+    withProgram,
+    WithProgram
+} from '../lib';
 
 const switchRepoQuestion = async (items: Item[]) => {
     if (items.length === 0) return undefined;
@@ -32,10 +36,7 @@ const switchRepoAnswer = ({
     };
 };
 
-const listRepos: WithProgram = (
-    { registry, workspacesRoot }: Configuration,
-    program
-) => {
+const listRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
     program.action(async (opts) => {
         const { workspace } = opts;
         await registry

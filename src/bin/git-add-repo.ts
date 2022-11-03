@@ -1,10 +1,9 @@
 #! /usr/bin/env node
 
 import { fromInput } from '../data';
-import { Configuration, getConfiguration } from '../lib/get-configuration';
-import { withProgram, WithProgram } from '../lib/with-program';
+import { getConfiguration, withProgram, WithProgram } from '../lib';
 
-const addRepo: WithProgram = ({ registry }: Configuration, program) => {
+const addRepo: WithProgram = ({ registry }, program) => {
     program.argument('<urlConnection>');
     program.action(async (urlConnection, opts) => {
         const workspace = opts.workspace;
