@@ -6,7 +6,7 @@ import { Item } from '../data/types';
 import { prompt } from 'inquirer';
 import * as path from 'path';
 import { spawn } from 'child_process';
-import { configuration, Configuration } from '../data/configuration';
+import { Configuration, getConfiguration } from '../lib/get-configuration';
 
 const switchRepoQuestion = async (items: Item[]) => {
     if (items.length === 0) return undefined;
@@ -54,4 +54,4 @@ const listRepos = ({
     program.parse(process.argv);
 };
 
-configuration().then(listRepos);
+getConfiguration().then(listRepos);

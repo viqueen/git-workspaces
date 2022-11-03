@@ -1,6 +1,6 @@
 import simpleGit, { GitConfigScope } from 'simple-git';
 import camelCase from 'lodash/camelCase';
-import * as path from 'path';
+import path from 'path';
 
 export type Configuration = {
     workspacesRoot: string;
@@ -11,7 +11,7 @@ export type Configuration = {
     registry: string;
 };
 
-export const configuration = async (): Promise<Configuration> => {
+export const getConfiguration = async (): Promise<Configuration> => {
     const list = await simpleGit().listConfig(GitConfigScope.global);
     const config = Object.entries(list.all)
         .filter(([key]) => key.startsWith('devbox.'))

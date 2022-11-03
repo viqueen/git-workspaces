@@ -4,7 +4,7 @@ import simpleGit, { GitConfigScope } from 'simple-git';
 import { prompt } from 'inquirer';
 import * as path from 'path';
 import * as os from 'os';
-import { Configuration } from '../data/configuration';
+import { Configuration } from '../lib/get-configuration';
 
 const configureGitDevboxQuestions = async () => {
     return prompt([

@@ -3,7 +3,7 @@
 import { Command } from 'commander';
 import { fromInput } from '../data';
 import { leveldbStore } from '../data/leveldb-store';
-import { configuration, Configuration } from '../data/configuration';
+import { Configuration, getConfiguration } from '../lib/get-configuration';
 
 const addRepo = ({ registry, workspacesDefault }: Configuration) => {
     const program = new Command();
@@ -24,4 +24,4 @@ const addRepo = ({ registry, workspacesDefault }: Configuration) => {
     program.parse(process.argv);
 };
 
-configuration().then(addRepo);
+getConfiguration().then(addRepo);
