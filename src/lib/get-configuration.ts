@@ -1,6 +1,7 @@
 import simpleGit, { GitConfigScope } from 'simple-git';
 import camelCase from 'lodash/camelCase';
 import path from 'path';
+import { leveldbRegistry, Registry } from './leveldb-registry';
 
 export type Configuration = {
     workspacesRoot: string;
@@ -8,7 +9,7 @@ export type Configuration = {
     githubUsername: string;
     githubPersonalToken: string;
 
-    registry: string;
+    registry: Registry;
 };
 
 export const getConfiguration = async (): Promise<Configuration> => {
@@ -23,6 +24,7 @@ export const getConfiguration = async (): Promise<Configuration> => {
         }, {} as Record<string, string>);
 
     const gitConfig = config as Omit<Configuration, 'registry'>;
-    const registry = path.resolve(gitConfig.workspacesRoot, '.git-devbox');
+    const registryPath = path.resolve(gitConfig.workspacesRoot, '.git-devbox');
+    const registry = leveldbRegistry(registryPath);
     return { ...gitConfig, registry };
 };

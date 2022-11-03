@@ -1,29 +1,31 @@
+import { Item, ItemFilter } from '../data/types';
 import LevelUp from 'levelup';
 import LevelDOWN from 'leveldown';
-import type { Item, ItemFilter } from './types';
 
-export const leveldbStore = (storePath: string) => {
-    const withStore = async <T>(
+export type Registry = {
+    add: (item: Item) => Promise<void>;
+    list: (filter: ItemFilter) => Promise<Item[]>;
+};
+
+export const leveldbRegistry = (registryPath: string): Registry => {
+    const withLeveldb = async <T>(
         fn: (s: LevelUp.LevelUp) => Promise<T>
     ): Promise<T> => {
-        const db = LevelUp(LevelDOWN(storePath));
+        const db = LevelUp(LevelDOWN(registryPath));
         const result = await fn(db);
         await db.close();
         return result;
     };
 
-    const add = async (item: Item) => {
-        return withStore<void>((store) =>
-            store.put(item.ID, JSON.stringify(item))
-        );
+    const add = async (item: Item): Promise<void> => {
+        return withLeveldb<void>((r) => r.put(item.ID, JSON.stringify(item)));
     };
 
     const list = async (filter: ItemFilter): Promise<Item[]> => {
-        return withStore<Item[]>((store) => {
+        return withLeveldb<Item[]>((r) => {
             return new Promise<Item[]>((resolve, reject) => {
                 const items: Item[] = [];
-                store
-                    .createValueStream()
+                r.createValueStream()
                     .on('data', (data: string) => {
                         const item = JSON.parse(data) as Item;
                         if (filter(item)) items.push(item);

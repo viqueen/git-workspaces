@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 
-import { leveldbStore } from '../data/leveldb-store';
 import { Item } from '../data/types';
 import { prompt } from 'inquirer';
 import * as path from 'path';
@@ -39,7 +38,7 @@ const listRepos: WithProgram = (
 ) => {
     program.action(async (opts) => {
         const { workspace } = opts;
-        await leveldbStore(registry)
+        await registry
             .list((item) => item.workspace === workspace)
             .then(switchRepoQuestion)
             .then(switchRepoAnswer({ workspacesRoot }));
