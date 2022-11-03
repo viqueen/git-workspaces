@@ -30,4 +30,12 @@ describe('from-input', () => {
         const parsedItem = fromInput({ urlConnection, workspace });
         expect(parsedItem).toEqual(httpsItem);
     });
+
+    it('should not extract details from invalid url connection', () => {
+        const parsedItem = fromInput({
+            urlConnection: 'invalid.git',
+            workspace: 'tools'
+        });
+        expect(parsedItem).toBeUndefined();
+    });
 });
