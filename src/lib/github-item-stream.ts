@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Item } from '../data/types';
-import { fromInput } from '../data';
+import { fromInput, linkParser } from '../data';
 
 type ItemCallback = (item: Item) => Promise<void>;
 
@@ -38,10 +38,11 @@ export const githubItemStream = async ({
 
     const streamUrl = `/${kind}/${namespace}/repos`;
 
-    const execute = async () => {
-        const result = await client.get<GithubItem[]>(streamUrl);
-        console.info(result.headers);
-        const items = result.data
+    const execute = async (params: any | undefined): Promise<void> => {
+        if (!params) return Promise.resolve();
+
+        const response = await client.get<GithubItem[]>(streamUrl, { params });
+        const items = response.data
             .map(({ ssh_url }) =>
                 fromInput({ urlConnection: ssh_url, workspace })
             )
@@ -49,7 +50,18 @@ export const githubItemStream = async ({
         for (const item of items) {
             await handler(item);
         }
+
+        const linkHeader = response.headers.link || '';
+        const nextLinks = linkHeader
+            .split(/\s*,\s*/)
+            .map(linkParser)
+            .filter((link) => {
+                return link?.rel === 'next';
+            });
+        const nextParams =
+            nextLinks.length === 1 ? nextLinks[0].params : undefined;
+        return await execute(nextParams);
     };
 
-    await execute();
+    await execute({});
 };
