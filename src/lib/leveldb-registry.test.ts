@@ -1,10 +1,15 @@
 import * as path from 'path';
 import { fromInput } from '../data';
 import { leveldbRegistry } from './leveldb-registry';
+import fs from 'fs';
 
 describe('leveldb-registry', () => {
     const testRegistryPath = path.resolve(process.cwd(), '.test-registry');
     const registry = leveldbRegistry(testRegistryPath);
+
+    afterAll(() => {
+        fs.rmSync(testRegistryPath, { recursive: true });
+    });
 
     it('should add item to registry', async () => {
         const input = {
