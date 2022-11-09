@@ -4,9 +4,9 @@
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
-    "git-add-repo": "dist/bin/git-add-repo.js",
     "git-devbox": "dist/bin/git-devbox.js",
-    "git-list-repos": "dist/bin/git-list-repos.js",
+    "git-repo-add": "dist/bin/git-repo-add.js",
+    "git-repo-list": "dist/bin/git-repo-list.js",
     "git-recent": "dist/bin/git-recent.js"
   },
   "scripts": {
