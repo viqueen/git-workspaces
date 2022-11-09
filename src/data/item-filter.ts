@@ -1,4 +1,4 @@
-import { Item } from '../data/types';
+import { Item } from './types';
 
 export type WithOptions = {
     namespace?: string;

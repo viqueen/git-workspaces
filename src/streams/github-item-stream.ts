@@ -53,7 +53,7 @@ export const githubItemStream = async ({
 
         const linkHeader = response.headers.link || '';
         const nextLinks = linkHeader
-            .split(/\s*,\s*/)
+            .split(',')
             .map(linkParser)
             .filter((link) => {
                 return link?.rel === 'next';

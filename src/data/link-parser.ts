@@ -1,5 +1,3 @@
-import * as QueryString from 'querystring';
-
 export type Link = {
     rel: string;
     href: string;
@@ -8,8 +6,14 @@ export type Link = {
 
 const LINK_PATTERN = /^<(?<href>.*)>; rel="(?<rel>next|last)"$/;
 
+const toMap = (searchParams: URLSearchParams) => {
+    const map: Record<string, any> = {};
+    searchParams.forEach((value, key) => (map[key] = value));
+    return map;
+};
+
 export const linkParser = (link: string): Link | undefined => {
-    const matcher = link.match(LINK_PATTERN);
+    const matcher = link.trim().match(LINK_PATTERN);
 
     if (!matcher) {
         return;
@@ -17,9 +21,10 @@ export const linkParser = (link: string): Link | undefined => {
 
     const groups = matcher.groups || {};
     const href = groups['href'];
+    const params = toMap(new URLSearchParams(new URL(href).search));
     return {
         href: href,
         rel: groups['rel'],
-        params: QueryString.parse(new URL(href).search)
+        params
     };
 };
