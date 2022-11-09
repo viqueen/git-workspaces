@@ -19,7 +19,11 @@ export const leveldbRegistry = (registryPath: string): Registry => {
     };
 
     const add = async (item: Item): Promise<void> => {
-        return withLeveldb<void>((r) => r.put(item.ID, JSON.stringify(item)));
+        return withLeveldb<void>(async (r) => {
+            r.put(item.ID, JSON.stringify(item));
+            const { workspace, urlConnection } = item;
+            console.info(`registered repo`, { workspace, urlConnection });
+        });
     };
 
     const fetch = async (id: string): Promise<Item | undefined> => {

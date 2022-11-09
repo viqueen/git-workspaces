@@ -11,7 +11,6 @@ const addRepo: WithProgram = ({ registry }, program) => {
         if (!item) return;
 
         await registry.add(item);
-        console.info(`registered repo`, { workspace, urlConnection });
     });
 };
 
