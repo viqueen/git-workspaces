@@ -1,13 +1,15 @@
 #! /usr/bin/env node
 
-import { getConfiguration, withProgram, WithProgram } from '../lib';
+import { getConfiguration, itemFilter, withProgram, WithProgram } from '../lib';
 
 const listRepos: WithProgram = ({ registry }, program) => {
     program.action(async (opts) => {
-        const { workspace } = opts;
+        const { workspace, namespace, host, slug, keyword } = opts;
         await registry
-            .list((item) => item.workspace === workspace)
-            .then(console.table);
+            .list(itemFilter({ workspace, namespace, host, slug, keyword }))
+            .then((items) =>
+                console.table(items, ['workspace', 'namespace', 'slug'])
+            );
     });
 };
 
