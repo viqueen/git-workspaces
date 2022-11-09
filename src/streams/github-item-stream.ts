@@ -60,7 +60,7 @@ export const githubItemStream = async ({
             });
         const nextParams =
             nextLinks.length === 1 ? nextLinks[0].params : undefined;
-        return await execute(nextParams);
+        return execute(nextParams);
     };
 
     await execute({});
