@@ -1,0 +1,55 @@
+#! /usr/bin/env node
+
+import simpleGit from 'simple-git';
+import { prompt } from 'inquirer';
+
+const listMergedBranches = async () => {
+    return simpleGit()
+        .raw([
+            'for-each-ref',
+            'refs/heads/',
+            `--format='%(refname:short)'`,
+            ' --merged'
+        ])
+        .then((output: string) =>
+            output
+                .trim()
+                .split('\n')
+                .map((branch) => branch.match(/'(?<name>.*)'/).groups.name)
+        );
+};
+
+const excludeOperationalBranches = async (branches: string[]) => {
+    return branches.filter(
+        (branch) =>
+            !branch.match(/^(main|master|production|demo|website|development)$/)
+    );
+};
+
+const selectForDeleteQuestion = async (branches: string[]) => {
+    if (branches.length === 0) return undefined;
+    return prompt([
+        {
+            name: 'selectedBranches',
+            type: 'checkbox',
+            message: 'choose merged branches to delete from local',
+            choices: branches,
+            pageSize: 10
+        }
+    ]);
+};
+
+const selectForDeleteAnswer = async (answer: {
+    selectedBranches: string[];
+}) => {
+    const { selectedBranches } = answer;
+    const output = Promise.all(
+        selectedBranches.map((branch) => simpleGit().deleteLocalBranch(branch))
+    );
+    console.table(output);
+};
+
+listMergedBranches()
+    .then(excludeOperationalBranches)
+    .then(selectForDeleteQuestion)
+    .then(selectForDeleteAnswer);
