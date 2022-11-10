@@ -2,6 +2,7 @@
 
 import simpleGit from 'simple-git';
 import { prompt } from 'inquirer';
+import { gitRawOutputHandler } from '../lib';
 
 const listMergedBranches = async () => {
     return simpleGit()
@@ -11,12 +12,7 @@ const listMergedBranches = async () => {
             `--format='%(refname:short)'`,
             ' --merged'
         ])
-        .then((output: string) =>
-            output
-                .trim()
-                .split('\n')
-                .map((branch) => branch.match(/'(?<name>.*)'/).groups.name)
-        );
+        .then(gitRawOutputHandler);
 };
 
 const excludeOperationalBranches = async (branches: string[]) => {

@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
-import { getConfiguration, itemFilter, withProgram, WithProgram } from '../lib';
+import { getConfiguration, withProgram, WithProgram } from '../lib';
+import { itemFilter } from '../data';
 
 const listRepos: WithProgram = ({ registry }, program) => {
     program.action(async (opts) => {

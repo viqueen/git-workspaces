@@ -1,3 +1,3 @@
 export * from './get-configuration';
-export * from '../data/item-filter';
+export * from './git-raw-output-handler';
 export * from './with-program';
