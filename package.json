@@ -5,9 +5,11 @@
   "preferGlobal": false,
   "bin": {
     "git-devbox": "dist/bin/git-devbox.js",
-    "git-repo-add": "dist/bin/git-repo-add.js",
-    "git-repo-list": "dist/bin/git-repo-list.js",
-    "git-recent": "dist/bin/git-recent.js"
+    "git-merged": "dist/bin/git-merged.js",
+    "git-recent": "dist/bin/git-recent.js",
+    "git-sync-github": "dist/bin/git-sync-github.js",
+    "git-workspace": "dist/bin/git-workspace.js",
+    "git-workspace-add": "dist/bin/git-workspace-add.js"
   },
   "scripts": {
     "build": "tsc",
