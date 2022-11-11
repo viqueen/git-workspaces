@@ -16,6 +16,12 @@ nvm install
 npm install
 ```
 
+- setup git hooks
+
+```bash
+npx husky install
+```
+
 - build it in watch mode
 
 ```bash
