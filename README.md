@@ -7,6 +7,13 @@
 
 #### from stable
 
+- with **homebrew** (preferred)
+
+```bash
+brew tap viqueen/git-devbox
+brew install git-devbox
+```
+
 - with **npm** (not recommended)
 
 ```bash
