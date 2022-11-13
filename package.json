@@ -9,7 +9,8 @@
     "git-recent": "dist/bin/git-recent.js",
     "git-sync-github": "dist/bin/git-sync-github.js",
     "git-workspace": "dist/bin/git-workspace.js",
-    "git-workspace-add": "dist/bin/git-workspace-add.js"
+    "git-workspace-add": "dist/bin/git-workspace-add.js",
+    "git-workspace-clone": "dist/bin/git-workspace-clone.js"
   },
   "scripts": {
     "build": "tsc",
