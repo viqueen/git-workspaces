@@ -1,5 +1,4 @@
-import { Item } from '../lib/types';
-import { itemLocation } from '../lib/item-location';
+import { Item, itemLocation } from '../lib';
 import * as fs from 'fs';
 import * as path from 'path';
 import simpleGit from 'simple-git';

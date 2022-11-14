@@ -10,7 +10,7 @@ export const withProgram = (fn: WithProgram) => {
     return async (configuration: Configuration) => {
         const program = new Command();
         program.option(
-            '-w, --workspace',
+            '-w, --workspace <workspace>',
             'with workspace',
             configuration.workspacesDefault
         );
