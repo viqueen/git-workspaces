@@ -1,7 +1,7 @@
 import * as path from 'path';
-import { fromInput } from '../data';
 import { leveldbRegistry } from './leveldb-registry';
 import fs from 'fs';
+import { fromInput } from './from-input';
 
 describe('leveldb-registry', () => {
     const testRegistryPath = path.resolve(process.cwd(), '.test-registry');

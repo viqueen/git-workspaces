@@ -21,7 +21,8 @@ describe('github-item-stream', () => {
             workspace: 'tools',
             kind: 'orgs',
             namespace: 'labset',
-            handler: registry.add
+            handler: registry.add,
+            githubItemFilter: () => true
         });
 
         const items = await registry.list();
