@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { Item } from '../data/types';
-import { fromInput, linkParser } from '../data';
+import { Item, fromInput, linkParser } from '../lib';
 
 type ItemCallback = (item: Item) => Promise<void>;
 

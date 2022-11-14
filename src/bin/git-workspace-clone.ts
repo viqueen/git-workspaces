@@ -1,8 +1,7 @@
 #! /usr/bin/env node
 
-import { getConfiguration, WithProgram, withProgram } from '../lib';
-import { itemFilter } from '../data';
-import { cloneItemCommand } from '../command/clone-item-command';
+import { getConfiguration, itemFilter, WithProgram, withProgram } from '../lib';
+import { cloneItemTask } from '../tasks';
 
 const cloneRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
     program.action(async (opts) => {
@@ -10,7 +9,7 @@ const cloneRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
         await registry
             .list(itemFilter({ workspace, namespace, host, slug, keyword }))
             .then((items) =>
-                Promise.all(items.map(cloneItemCommand({ workspacesRoot })))
+                Promise.all(items.map(cloneItemTask({ workspacesRoot })))
             );
     });
 };

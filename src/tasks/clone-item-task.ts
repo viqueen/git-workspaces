@@ -1,10 +1,10 @@
-import { Item } from '../data/types';
-import { itemLocation } from '../data/item-location';
+import { Item } from '../lib/types';
+import { itemLocation } from '../lib/item-location';
 import * as fs from 'fs';
 import * as path from 'path';
 import simpleGit from 'simple-git';
 
-export const cloneItemCommand = (props: { workspacesRoot: string }) => {
+export const cloneItemTask = (props: { workspacesRoot: string }) => {
     const { workspacesRoot } = props;
     return async (item: Item) => {
         const target = itemLocation({ workspacesRoot, item });

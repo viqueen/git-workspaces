@@ -1,4 +1,4 @@
-import { Item, ItemFilter } from '../data/types';
+import { Item, ItemFilter } from './types';
 import LevelUp from 'levelup';
 import LevelDOWN from 'leveldown';
 

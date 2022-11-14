@@ -1,7 +1,6 @@
 #! /usr/bin/env node
 
-import { fromInput } from '../data';
-import { getConfiguration, withProgram, WithProgram } from '../lib';
+import { fromInput, getConfiguration, withProgram, WithProgram } from '../lib';
 
 const addRepo: WithProgram = ({ registry }, program) => {
     program.argument('<urlConnection>');
