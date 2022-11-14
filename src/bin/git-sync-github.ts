@@ -9,8 +9,11 @@ const githubSync: WithProgram = (
 ) => {
     program.option('--user <namespace>', 'with user namespace');
     program.option('--org <namespace>', 'with org namespace');
+    program.option('--archived', 'include archived repos', false);
+    program.option('--forked', 'include forked repos', false);
+
     program.action(async (opts) => {
-        const { workspace, user, org } = opts;
+        const { workspace, user, org, archived, forked } = opts;
         if (!user && !org) {
             console.error(`missing input options: --user|--org <namespace>`);
             return;
@@ -21,7 +24,12 @@ const githubSync: WithProgram = (
             kind: user ? 'users' : 'orgs',
             namespace: user ?? org,
             workspace,
-            handler: registry.add
+            handler: registry.add,
+            githubItemFilter: (item) => {
+                const withArchived = item.archived ? archived : true;
+                const withForks = item.fork ? forked : true;
+                return withArchived && withForks;
+            }
         });
     });
 };

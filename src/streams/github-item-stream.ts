@@ -3,6 +3,14 @@ import { Item, fromInput, linkParser } from '../lib';
 
 type ItemCallback = (item: Item) => Promise<void>;
 
+type GithubItem = {
+    ssh_url: string;
+    fork: boolean;
+    archived: boolean;
+};
+
+type GithubItemFilter = (item: GithubItem) => boolean;
+
 type GithubItemStreamProps = {
     githubUsername: string;
     githubPersonalToken: string;
@@ -11,12 +19,7 @@ type GithubItemStreamProps = {
     kind: string;
     namespace: string;
     handler: ItemCallback;
-};
-
-type GithubItem = {
-    ssh_url: string;
-    fork: boolean;
-    archived: boolean;
+    githubItemFilter: GithubItemFilter;
 };
 
 export const githubItemStream = async ({
@@ -25,7 +28,8 @@ export const githubItemStream = async ({
     workspace,
     kind,
     namespace,
-    handler
+    handler,
+    githubItemFilter
 }: GithubItemStreamProps) => {
     const client = axios.create({
         baseURL: `https://api.github.com`,
@@ -42,6 +46,7 @@ export const githubItemStream = async ({
 
         const response = await client.get<GithubItem[]>(streamUrl, { params });
         const items = response.data
+            .filter(githubItemFilter)
             .map(({ ssh_url }) =>
                 fromInput({ urlConnection: ssh_url, workspace })
             )
