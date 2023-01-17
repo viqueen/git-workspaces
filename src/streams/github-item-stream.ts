@@ -51,7 +51,9 @@ export const githubItemStream = async ({
                 fromInput({ urlConnection: ssh_url, workspace })
             )
             .filter((item) => item !== undefined);
+
         for (const item of items) {
+            if (!item) continue;
             await handler(item);
         }
 
@@ -63,7 +65,7 @@ export const githubItemStream = async ({
                 return link?.rel === 'next';
             });
         const nextParams =
-            nextLinks.length === 1 ? nextLinks[0].params : undefined;
+            nextLinks.length === 1 ? nextLinks[0]?.params : undefined;
         return execute(nextParams);
     };
 
