@@ -17,9 +17,11 @@ describe('leveldb-registry', () => {
             workspace: 'tools'
         };
         const item = fromInput(input);
-        await registry.add(item);
+        expect(item).toBeDefined();
 
-        const found = await registry.fetch(item.ID);
+        await registry.add(item!);
+
+        const found = await registry.fetch(item!.ID);
         expect(found).toBeDefined();
 
         const notFound = await registry.fetch('not-found');

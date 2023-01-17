@@ -35,11 +35,12 @@ const selectForDeleteQuestion = async (branches: string[]) => {
     ]);
 };
 
-const selectForDeleteAnswer = async (answer: {
+const selectForDeleteAnswer = async (answer?: {
     selectedBranches: string[];
 }) => {
+    if (!answer) return;
     const { selectedBranches } = answer;
-    const output = Promise.all(
+    const output = await Promise.all(
         selectedBranches.map((branch) => simpleGit().deleteLocalBranch(branch))
     );
     console.table(output);

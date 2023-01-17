@@ -18,7 +18,7 @@ export const fromInput = (input: Input): Item | undefined => {
         return;
     }
 
-    const groups = urlMatch.groups;
+    const groups = urlMatch.groups || {};
     const host = groups['host'];
     const namespace = groups['namespace'];
     const slug = groups['slug'];

@@ -28,9 +28,7 @@ const switchRecentBranchQuestion = async (branches: string[]) => {
     ]);
 };
 
-const switchRecentBranchAnswer = async (
-    answer: { branchDetails: string } | undefined
-) => {
+const switchRecentBranchAnswer = async (answer?: { branchDetails: string }) => {
     if (!answer) return undefined;
     const matcher = answer.branchDetails.match(
         /\d{4}-\d{2}-\d{2} (?<branchName>.*)/
@@ -38,7 +36,7 @@ const switchRecentBranchAnswer = async (
     const branchName = matcher?.groups?.branchName;
     if (!branchName) {
         console.error('recent branch name selection not found');
-        return;
+        return undefined;
     }
     return simpleGit().checkout(branchName);
 };

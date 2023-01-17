@@ -6,7 +6,9 @@
     "outDir": "dist",
     "rootDir": "src",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true
   },
   "exclude": [
     "node_modules",
