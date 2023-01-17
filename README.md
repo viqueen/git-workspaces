@@ -44,7 +44,7 @@ git recent
 - list merged git branches that you still have locally, multi select the ones you want to delete
 
 ```bash
-git merde
+git merged
 ```
 
 ![git merged example](./docs/images/git-merged.png)
