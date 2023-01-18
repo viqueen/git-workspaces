@@ -4,15 +4,15 @@ import simpleGit from 'simple-git';
 import { prompt } from 'inquirer';
 import { gitRawOutputHandler } from '../lib';
 
-const listMergedBranches = async () => {
-    return simpleGit()
-        .raw([
-            'for-each-ref',
-            'refs/heads/',
-            `--format='%(refname:short)'`,
-            ' --merged'
-        ])
-        .then(gitRawOutputHandler);
+const listMergedBranches = async ({ target }: { target?: string }) => {
+    const params = [
+        'for-each-ref',
+        'refs/heads/',
+        `--format='%(refname:short)'`,
+        ' --merged'
+    ];
+    const withTarget = target !== undefined ? [...params, target] : [...params];
+    return simpleGit().raw(withTarget).then(gitRawOutputHandler);
 };
 
 const excludeOperationalBranches = async (branches: string[]) => {
@@ -46,7 +46,9 @@ const selectForDeleteAnswer = async (answer?: {
     console.table(output);
 };
 
-listMergedBranches()
+const target = process.argv.slice(2).shift();
+
+listMergedBranches({ target })
     .then(excludeOperationalBranches)
     .then(selectForDeleteQuestion)
     .then(selectForDeleteAnswer);
