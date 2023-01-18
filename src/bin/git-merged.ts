@@ -5,14 +5,15 @@ import { prompt } from 'inquirer';
 import { gitRawOutputHandler } from '../lib';
 
 const listMergedBranches = async ({ target }: { target?: string }) => {
-    const params = [
-        'for-each-ref',
-        'refs/heads/',
-        `--format='%(refname:short)'`,
-        ' --merged'
-    ];
-    const withTarget = target !== undefined ? [...params, target] : [...params];
-    return simpleGit().raw(withTarget).then(gitRawOutputHandler);
+    const params = ['--merged'];
+    const mergedWithTarget =
+        target !== undefined ? [...params, target] : [...params];
+    return simpleGit()
+        .branch(mergedWithTarget)
+        .then((output) => {
+            const { all, current } = output;
+            return all.filter((i) => i !== current);
+        });
 };
 
 const excludeOperationalBranches = async (branches: string[]) => {
