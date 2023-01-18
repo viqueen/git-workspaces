@@ -1,8 +1,8 @@
 #! /usr/bin/env node
 
 import simpleGit from 'simple-git';
-import { prompt } from 'inquirer';
 import { gitRawOutputHandler } from '../lib';
+import { selectAndCheckoutBranch } from '../lib/select-and-checkout-branch';
 
 const listRecentBranches = async () => {
     return simpleGit()
@@ -15,32 +15,4 @@ const listRecentBranches = async () => {
         .then(gitRawOutputHandler);
 };
 
-const switchRecentBranchQuestion = async (branches: string[]) => {
-    if (branches.length === 0) return undefined;
-    return prompt([
-        {
-            name: 'branchDetails',
-            type: 'list',
-            message: 'select recent branch to switch to',
-            choices: branches,
-            pageSize: 30
-        }
-    ]);
-};
-
-const switchRecentBranchAnswer = async (answer?: { branchDetails: string }) => {
-    if (!answer) return undefined;
-    const matcher = answer.branchDetails.match(
-        /\d{4}-\d{2}-\d{2} (?<branchName>.*)/
-    );
-    const branchName = matcher?.groups?.branchName;
-    if (!branchName) {
-        console.error('recent branch name selection not found');
-        return undefined;
-    }
-    return simpleGit().checkout(branchName);
-};
-
-listRecentBranches()
-    .then(switchRecentBranchQuestion)
-    .then(switchRecentBranchAnswer);
+listRecentBranches().then(selectAndCheckoutBranch);
