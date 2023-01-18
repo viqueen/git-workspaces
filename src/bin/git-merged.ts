@@ -2,7 +2,6 @@
 
 import simpleGit from 'simple-git';
 import { prompt } from 'inquirer';
-import { gitRawOutputHandler } from '../lib';
 
 const listMergedBranches = async ({ target }: { target?: string }) => {
     const params = ['--merged'];
