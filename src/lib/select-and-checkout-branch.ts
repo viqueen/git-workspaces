@@ -14,19 +14,21 @@ const selectBranchQuestion = async (branches: string[]) => {
     ]);
 };
 
-const checkoutBranchAnswer = async (answer?: { branchDetails: string }) => {
-    if (!answer) return undefined;
-    const matcher = answer.branchDetails.match(
-        /\d{4}-\d{2}-\d{2} (?<branchName>.*)/
-    );
-    const branchName = matcher?.groups?.branchName;
-    if (!branchName) {
-        console.error('branch name selection not found');
-        return undefined;
-    }
-    return simpleGit().checkout(branchName);
-};
+const checkoutBranchAnswer =
+    (branchPattern: RegExp) => async (answer?: { branchDetails: string }) => {
+        if (!answer) return undefined;
+        const matcher = answer.branchDetails.match(branchPattern);
+        const branchName = matcher?.groups?.branchName;
+        if (!branchName) {
+            console.error('branch name selection not found');
+            return undefined;
+        }
+        return simpleGit().checkout(branchName);
+    };
 
-export const selectAndCheckoutBranch = async (branches: string[]) => {
-    return await selectBranchQuestion(branches).then(checkoutBranchAnswer);
-};
+export const selectAndCheckoutBranch =
+    (branchPattern: RegExp) => async (branches: string[]) => {
+        return await selectBranchQuestion(branches).then(
+            checkoutBranchAnswer(branchPattern)
+        );
+    };

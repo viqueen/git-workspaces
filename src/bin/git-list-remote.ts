@@ -18,4 +18,6 @@ const listRemoteBranches = async ({ pattern }: { pattern?: string }) => {
 
 const pattern = process.argv.slice(2).shift();
 
-listRemoteBranches({ pattern }).then(selectAndCheckoutBranch);
+listRemoteBranches({ pattern }).then(
+    selectAndCheckoutBranch(/(?<branchName>.*)/)
+);
