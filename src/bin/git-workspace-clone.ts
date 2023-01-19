@@ -1,6 +1,12 @@
 #! /usr/bin/env node
 
-import { getConfiguration, itemFilter, WithProgram, withProgram } from '../lib';
+import {
+    getConfiguration,
+    itemFilter,
+    WithProgram,
+    withProgram,
+    withCliProgress
+} from '../lib';
 import { cloneItemTask } from '../tasks';
 
 const cloneRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
@@ -8,9 +14,13 @@ const cloneRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
         const { workspace, namespace, host, slug, keyword } = opts;
         await registry
             .list(itemFilter({ workspace, namespace, host, slug, keyword }))
-            .then((items) =>
-                Promise.all(items.map(cloneItemTask({ workspacesRoot })))
-            );
+            .then((items) => {
+                return withCliProgress((taskPool) => {
+                    items
+                        .map(cloneItemTask({ workspacesRoot }))
+                        .forEach((t) => t && taskPool.submit(t));
+                });
+            });
     });
 };
 
