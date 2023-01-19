@@ -11,10 +11,13 @@ export type WithCliProgress = (
 export const withCliProgress = async (fn: WithCliProgress) => {
     const taskPool = cliProgressTaskPoolExecutor<string>();
     fn(taskPool);
-    const timer = setInterval(async () => {
-        if (taskPool.queue.length === 0 && taskPool.current.size === 0) {
-            await taskPool.close();
-            clearInterval(timer);
-        }
-    }, 2);
+    return new Promise((resolve) => {
+        const timer = setInterval(async () => {
+            if (taskPool.queue.length === 0 && taskPool.current.size === 0) {
+                await taskPool.close();
+                clearInterval(timer);
+                resolve({});
+            }
+        }, 2);
+    });
 };
