@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 import { getConfiguration, WithProgram, withProgram } from '../lib';
-import { githubItemStream } from '../streams/github-item-stream';
+import { githubItemStream } from '../streams';
 
 const githubSync: WithProgram = (
     { githubUsername, githubPersonalToken, registry },

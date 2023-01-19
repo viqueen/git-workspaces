@@ -4,6 +4,7 @@ export * from './git-raw-output-handler';
 export * from './item-filter';
 export * from './item-location';
 export * from './link-parser';
+export * from './with-cli-progress';
 export * from './with-program';
 
 export * from './types';
