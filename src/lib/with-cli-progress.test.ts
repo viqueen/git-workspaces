@@ -5,7 +5,9 @@ jest.mock('task-pool-executor', () => {
     return {
         ...jest.requireActual('task-pool-executor'),
         cliProgressTaskPoolExecutor: jest.fn(() => {
-            return taskPoolExecutor<string, CliProgressRunContext>();
+            return taskPoolExecutor<string, CliProgressRunContext>({
+                maxConcurrent: 2
+            });
         })
     };
 });
@@ -26,11 +28,11 @@ const delayedTask = (millis: number, title: string) => {
 describe('with-cli-progress', () => {
     it('should clear when tasks are done', async () => {
         await withCliProgress((taskPool) => {
-            new Array(10)
+            new Array(4)
                 .fill(0)
-                .map((_v, index) => delayedTask(2000, `task ${index}`))
+                .map((_v, index) => delayedTask(1500, `task ${index}`))
                 .forEach((t) => taskPool.submit(t));
         });
-        expect(task).toBeCalledTimes(10);
+        expect(task).toBeCalledTimes(4);
     });
 });
