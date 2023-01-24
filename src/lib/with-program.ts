@@ -19,6 +19,7 @@ export const withProgram = (fn: WithProgram) => {
         program.option('-s, --slug <slug>', 'filter by name or slug');
         program.option('-k, --keyword <keyword>', 'filter by keyword');
         fn(configuration, program);
+        program.version(require('../../package.json').version);
         program.parse(process.argv);
     };
 };

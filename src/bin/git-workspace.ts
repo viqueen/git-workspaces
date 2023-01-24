@@ -13,6 +13,7 @@ const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
         .option('-dl, --display-location', 'display location only', false)
         .option('-dc, --display-connection', 'display connection only', false)
         .option('-ds, --display-slug', 'display slug only', false)
+        .description('list repos registered on workspace')
         .action(async (opts) => {
             const { workspace, namespace, host, slug, keyword } = opts;
             await registry
