@@ -2,7 +2,7 @@ import { itemFilter } from './item-filter';
 
 describe('item-filter', () => {
     const sshItem = {
-        ID: 'tools_viqueen_codenav',
+        id: 'tools_viqueen_codenav',
         urlConnection: 'ssh://git@github.com:viqueen/codenav.git',
         workspace: 'tools',
         host: 'github.com',

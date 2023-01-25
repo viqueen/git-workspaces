@@ -11,7 +11,11 @@ const addRepo: WithProgram = ({ registry }, program) => {
             const item = fromInput({ urlConnection, workspace });
             if (!item) return;
 
-            await registry.add(item);
+            await registry
+                .add(item)
+                .then(({ workspace, urlConnection }) =>
+                    console.info({ workspace, urlConnection })
+                );
         });
 };
 

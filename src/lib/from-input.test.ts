@@ -2,7 +2,7 @@ import { fromInput } from './from-input';
 
 describe('from-input', () => {
     const sshItem = {
-        ID: 'tools_viqueen_codenav',
+        id: 'tools_viqueen_codenav',
         urlConnection: 'ssh://git@github.com:viqueen/codenav.git',
         workspace: 'tools',
         host: 'github.com',
@@ -11,7 +11,7 @@ describe('from-input', () => {
     };
 
     const httpsItem = {
-        ID: 'tools_viqueen_devbox',
+        id: 'tools_viqueen_devbox',
         urlConnection: 'https://github.com/viqueen/devbox.git',
         workspace: 'tools',
         host: 'github.com',

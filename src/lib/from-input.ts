@@ -22,10 +22,10 @@ export const fromInput = (input: Input): Item | undefined => {
     const host = groups['host'];
     const namespace = groups['namespace'];
     const slug = groups['slug'];
-    const ID = [workspace, namespace, slug].join('_');
+    const id = [workspace, namespace, slug].join('_');
 
     return {
-        ID,
+        id,
         urlConnection,
         workspace,
         host,

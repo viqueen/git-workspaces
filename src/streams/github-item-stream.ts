@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { Item, fromInput, linkParser } from '../lib';
+import { Item, fromInput, linkParser, Link } from '../lib';
 
-type ItemCallback = (item: Item) => Promise<void>;
+type ItemCallback = (item: Item) => Promise<Item>;
 
 type GithubItem = {
     ssh_url: string;
@@ -54,14 +54,16 @@ export const githubItemStream = async ({
 
         for (const item of items) {
             if (!item) continue;
-            await handler(item);
+            await handler(item).then(({ workspace, urlConnection }) =>
+                console.info({ workspace, urlConnection })
+            );
         }
 
         const linkHeader = response.headers.link || '';
         const nextLinks = linkHeader
             .split(',')
             .map(linkParser)
-            .filter((link) => {
+            .filter((link: Link | undefined) => {
                 return link?.rel === 'next';
             });
         const nextParams =

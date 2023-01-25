@@ -1,14 +1,15 @@
 import path from 'path';
-import { leveldbRegistry } from '../lib/leveldb-registry';
 import { githubItemStream } from './github-item-stream';
 import * as fs from 'fs';
+import { leveldbRegistry } from 'leveldb-registry';
+import { Item } from '../lib';
 
 describe('github-item-stream', () => {
     const testRegistryPath = path.resolve(
         process.cwd(),
         '.test-github-registry'
     );
-    const registry = leveldbRegistry(testRegistryPath);
+    const registry = leveldbRegistry<Item>({ localPath: testRegistryPath });
 
     afterAll(() => {
         fs.rmSync(testRegistryPath, { recursive: true });

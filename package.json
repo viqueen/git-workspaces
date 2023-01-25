@@ -1,6 +1,6 @@
 {
   "name": "git-devbox",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -42,8 +42,6 @@
     "@types/cli-progress": "^3.11.0",
     "@types/inquirer": "^8.2.4",
     "@types/jest": "^29.2.5",
-    "@types/leveldown": "^4.0.3",
-    "@types/levelup": "^5.1.2",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.18",
     "jest": "^29.3.1",
@@ -56,8 +54,7 @@
     "axios": "^1.2.2",
     "commander": "^10.0.0",
     "inquirer": "^8.2.5",
-    "leveldown": "^6.1.1",
-    "levelup": "^5.1.1",
+    "leveldb-registry": "^1.0.0",
     "lodash": "^4.17.21",
     "simple-git": "^3.16.0",
     "task-pool-executor": "^2.0.1"
