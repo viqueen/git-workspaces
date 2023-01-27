@@ -1,13 +1,8 @@
 #! /usr/bin/env node
 
-import {
-    getConfiguration,
-    itemFilter,
-    WithProgram,
-    withProgram,
-    withCliProgress
-} from '../lib';
+import { getConfiguration, itemFilter, WithProgram, withProgram } from '../lib';
 import { cloneItemTask } from '../tasks';
+import { withCliProgress } from 'task-pool-executor';
 
 const cloneRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
     program.description('clone workspace repos').action(async (opts) => {

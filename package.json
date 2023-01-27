@@ -1,6 +1,6 @@
 {
   "name": "git-devbox",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -57,6 +57,6 @@
     "leveldb-registry": "^1.0.0",
     "lodash": "^4.17.21",
     "simple-git": "^3.16.0",
-    "task-pool-executor": "^2.0.1"
+    "task-pool-executor": "^2.1.0"
   }
 }
