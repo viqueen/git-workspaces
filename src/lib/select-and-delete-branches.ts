@@ -15,7 +15,7 @@ const selectForDeleteQuestion = async (branches: string[]) => {
 };
 
 const selectForDeleteAnswer =
-    (branchPattern: RegExp) =>
+    (branchPattern: RegExp, forceDelete: boolean) =>
     async (answer?: { selectedBranches: string[] }) => {
         if (!answer) return;
         const { selectedBranches } = answer;
@@ -25,15 +25,17 @@ const selectForDeleteAnswer =
         });
         const output = await Promise.all(
             mappedBranchNames.map(
-                (branch) => branch && simpleGit().deleteLocalBranch(branch)
+                (branch) =>
+                    branch && simpleGit().deleteLocalBranch(branch, forceDelete)
             )
         );
         console.table(output);
     };
 
 export const selectAndDeleteBranches =
-    (branchPattern: RegExp) => async (branches: string[]) => {
+    (branchPattern: RegExp, forceDelete: boolean = false) =>
+    async (branches: string[]) => {
         return selectForDeleteQuestion(branches).then(
-            selectForDeleteAnswer(branchPattern)
+            selectForDeleteAnswer(branchPattern, forceDelete)
         );
     };

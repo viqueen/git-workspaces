@@ -1,6 +1,6 @@
 {
   "name": "git-devbox",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
