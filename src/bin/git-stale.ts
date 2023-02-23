@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import { listRecentBranches } from '../lib/list-recent-branches';
 import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
 
