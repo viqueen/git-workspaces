@@ -8,6 +8,7 @@
     "git-list-remote": "dist/bin/git-list-remote.js",
     "git-merged": "dist/bin/git-merged.js",
     "git-recent": "dist/bin/git-recent.js",
+    "git-stale": "dist/bin/git-stale.js",
     "git-sync-github": "dist/bin/git-sync-github.js",
     "git-workspace": "dist/bin/git-workspace.js",
     "git-workspace-add": "dist/bin/git-workspace-add.js",
