@@ -57,7 +57,7 @@
     "inquirer": "^8.2.5",
     "leveldb-registry": "^1.1.1",
     "lodash": "^4.17.21",
-    "simple-git": "^3.16.1",
+    "simple-git": "^3.17.0",
     "task-pool-executor": "^2.1.0"
   }
 }
