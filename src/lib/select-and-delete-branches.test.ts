@@ -11,11 +11,13 @@ jest.mock('inquirer', () => {
 });
 
 jest.mock('simple-git', () => {
-    return () => ({
-        deleteLocalBranch: jest.fn(() => {
-            return Promise.resolve('DONE');
-        })
-    });
+    return {
+        simpleGit: jest.fn(() => ({
+            deleteLocalBranch: jest.fn(() => {
+                return Promise.resolve('DONE');
+            })
+        }))
+    };
 });
 
 jest.spyOn(console, 'table');

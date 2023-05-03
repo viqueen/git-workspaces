@@ -11,11 +11,13 @@ jest.mock('inquirer', () => {
 });
 
 jest.mock('simple-git', () => {
-    return () => ({
-        checkout: jest.fn(() => {
-            return Promise.resolve('DONE');
-        })
-    });
+    return {
+        simpleGit: jest.fn(() => ({
+            checkout: jest.fn(() => {
+                return Promise.resolve('DONE');
+            })
+        }))
+    };
 });
 
 describe('select-and-checkout-branch', () => {
