@@ -3,7 +3,7 @@ import path from 'path';
 
 import { leveldbRegistry, Registry } from 'leveldb-registry';
 import camelCase from 'lodash/camelCase';
-import simpleGit, { GitConfigScope } from 'simple-git';
+import { simpleGit, GitConfigScope } from 'simple-git';
 
 import { Item } from './types';
 

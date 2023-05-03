@@ -1,5 +1,5 @@
 import { prompt } from 'inquirer';
-import simpleGit from 'simple-git';
+import { simpleGit } from 'simple-git';
 
 const selectBranchQuestion = async (branches: string[]) => {
     if (branches.length === 0) return undefined;

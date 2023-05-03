@@ -1,5 +1,5 @@
 import { prompt } from 'inquirer';
-import simpleGit from 'simple-git';
+import { simpleGit } from 'simple-git';
 
 const selectForDeleteQuestion = async (branches: string[]) => {
     if (branches.length === 0) return undefined;
@@ -19,7 +19,7 @@ const selectForDeleteAnswer =
     async (answer?: { selectedBranches: string[] }) => {
         if (!answer) return;
         const { selectedBranches } = answer;
-        const mappedBranchNames = answer.selectedBranches.map((info) => {
+        const mappedBranchNames = selectedBranches.map((info) => {
             const matcher = info.match(branchPattern);
             return matcher?.groups?.branchName;
         });

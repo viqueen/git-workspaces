@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-import simpleGit from 'simple-git';
+import { simpleGit } from 'simple-git';
 
 import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
 

@@ -4,7 +4,7 @@ import * as os from 'os';
 import * as path from 'path';
 
 import { prompt } from 'inquirer';
-import simpleGit, { GitConfigScope } from 'simple-git';
+import { simpleGit, GitConfigScope } from 'simple-git';
 
 import { Configuration } from '../lib';
 

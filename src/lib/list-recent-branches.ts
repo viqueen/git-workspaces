@@ -1,4 +1,4 @@
-import simpleGit from 'simple-git';
+import { simpleGit } from 'simple-git';
 
 import { gitRawOutputHandler } from './git-raw-output-handler';
 

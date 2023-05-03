@@ -1,13 +1,13 @@
 export type Link = {
     rel: string;
     href: string;
-    params: any;
+    params: unknown;
 };
 
 const LINK_PATTERN = /^<(?<href>.*)>; rel="(?<rel>next|last)"$/;
 
 const toMap = (searchParams: URLSearchParams) => {
-    const map: Record<string, any> = {};
+    const map: Record<string, unknown> = {};
     searchParams.forEach((value, key) => (map[key] = value));
     return map;
 };

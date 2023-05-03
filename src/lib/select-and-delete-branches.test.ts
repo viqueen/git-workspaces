@@ -22,9 +22,9 @@ jest.spyOn(console, 'table');
 
 describe('select-and-delete-branches', () => {
     it('should select and delete branch', async () => {
-        const result = await selectAndDeleteBranches(
-            /(?<branchName>noissue\/.*)/
-        )(['does-not-matter']);
+        await selectAndDeleteBranches(/(?<branchName>noissue\/.*)/)([
+            'does-not-matter'
+        ]);
         expect(jest.mocked(console.table).mock.calls).toHaveLength(1);
     });
 });

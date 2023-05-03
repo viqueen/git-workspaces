@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import simpleGit, { SimpleGitProgressEvent } from 'simple-git';
+import { simpleGit } from 'simple-git';
+import type { SimpleGitProgressEvent } from 'simple-git';
 import { CliProgressRunContext, Runnable } from 'task-pool-executor';
 
 import { Item, itemLocation } from '../lib';

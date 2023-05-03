@@ -1,9 +1,9 @@
 import type { Input, Item } from './types';
 
 const SSH_URL_PATTERN =
-    /^(?<protocol>ssh:\/\/)?([a-zA-Z\d]+)@(?<host>[a-zA-Z\d.]+(:\d+)?)([\/:])(?<namespace>[a-zA-Z\d-_]+)\/(?<slug>[a-zA-Z\d-_\.]+)\.git$/;
+    /^(?<protocol>ssh:\/\/)?([a-zA-Z\d]+)@(?<host>[a-zA-Z\d.]+(:\d+)?)([/:])(?<namespace>[a-zA-Z\d-_]+)\/(?<slug>[a-zA-Z\d-_.]+)\.git$/;
 const HTTPS_URL_PATTERN =
-    /^(?<protocol>https:\/\/)(?<host>[a-zA-Z\d.]+)\/(?<namespace>[a-zA-Z\d-_]+)\/(?<slug>[a-zA-Z\d-_\.]+)\.git$/;
+    /^(?<protocol>https:\/\/)(?<host>[a-zA-Z\d.]+)\/(?<namespace>[a-zA-Z\d-_]+)\/(?<slug>[a-zA-Z\d-_.]+)\.git$/;
 
 export const fromInput = (input: Input): Item | undefined => {
     const { urlConnection, workspace } = input;

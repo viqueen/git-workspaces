@@ -42,7 +42,7 @@ export const githubItemStream = async ({
 
     const streamUrl = `/${kind}/${namespace}/repos`;
 
-    const execute = async (params: any | undefined): Promise<void> => {
+    const execute = async (params: unknown | undefined): Promise<void> => {
         if (!params) return Promise.resolve();
 
         const response = await client.get<GithubItem[]>(streamUrl, { params });
