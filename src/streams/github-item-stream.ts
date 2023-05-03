@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { Item, fromInput, linkParser, Link } from '../lib';
 
 type ItemCallback = (item: Item) => Promise<Item>;

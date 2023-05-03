@@ -1,8 +1,11 @@
-import path from 'path';
-import { githubItemStream } from './github-item-stream';
 import * as fs from 'fs';
+import path from 'path';
+
 import { leveldbRegistry } from 'leveldb-registry';
+
 import { Item } from '../lib';
+
+import { githubItemStream } from './github-item-stream';
 
 describe('github-item-stream', () => {
     const testRegistryPath = path.resolve(

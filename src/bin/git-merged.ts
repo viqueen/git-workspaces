@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import simpleGit from 'simple-git';
+
 import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
 
 const listMergedBranches = async ({ target }: { target?: string }) => {

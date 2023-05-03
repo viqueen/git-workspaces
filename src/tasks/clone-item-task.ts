@@ -1,8 +1,10 @@
-import { CliProgressRunContext, Runnable } from 'task-pool-executor';
-import { Item, itemLocation } from '../lib';
 import * as fs from 'fs';
 import * as path from 'path';
+
 import simpleGit, { SimpleGitProgressEvent } from 'simple-git';
+import { CliProgressRunContext, Runnable } from 'task-pool-executor';
+
+import { Item, itemLocation } from '../lib';
 
 export const cloneItemTask = (props: { workspacesRoot: string }) => {
     const { workspacesRoot } = props;

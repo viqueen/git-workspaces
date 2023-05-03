@@ -33,7 +33,7 @@ const selectForDeleteAnswer =
     };
 
 export const selectAndDeleteBranches =
-    (branchPattern: RegExp, forceDelete: boolean = false) =>
+    (branchPattern: RegExp, forceDelete = false) =>
     async (branches: string[]) => {
         return selectForDeleteQuestion(branches).then(
             selectForDeleteAnswer(branchPattern, forceDelete)

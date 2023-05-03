@@ -1,8 +1,10 @@
-import simpleGit, { GitConfigScope } from 'simple-git';
-import camelCase from 'lodash/camelCase';
-import path from 'path';
 import * as fs from 'fs';
+import path from 'path';
+
 import { leveldbRegistry, Registry } from 'leveldb-registry';
+import camelCase from 'lodash/camelCase';
+import simpleGit, { GitConfigScope } from 'simple-git';
+
 import { Item } from './types';
 
 export type Configuration = {

@@ -6,6 +6,12 @@ I use **[nvm](https://github.com/nvm-sh/nvm)** to manage my node versions.
 brew install nvm
 ```
 
+I use **[yarn](https://yarnpkg.com/)** as my node package manager
+
+```bash
+brew install yarn
+```
+
 ## development setup
 
 - create a fork of the repo, clone it, and install the dependencies
@@ -13,7 +19,7 @@ brew install nvm
 ```bash
 cd git-devbox
 nvm install
-npm install
+yarn
 ```
 
 - setup git hooks
@@ -25,7 +31,7 @@ npx husky install
 - build it in watch mode
 
 ```bash
-npm run build -- --watch
+yarn build --watch
 ```
 
 - you can now use the cli

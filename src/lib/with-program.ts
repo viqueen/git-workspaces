@@ -1,5 +1,6 @@
-import { Configuration } from './get-configuration';
 import { Command } from 'commander';
+
+import { Configuration } from './get-configuration';
 
 export type WithProgram = (
     configuration: Configuration,

@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 import simpleGit from 'simple-git';
+
 import { selectAndCheckoutBranch } from '../lib/select-and-checkout-branch';
 
 const listRemoteBranches = async ({ pattern }: { pattern?: string }) => {

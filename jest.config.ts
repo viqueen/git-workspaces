@@ -8,6 +8,7 @@ export default async (): Promise<Config> => {
         preset: 'ts-jest',
         testEnvironment: 'node',
         collectCoverage: true,
-        coverageDirectory: 'coverage'
+        coverageDirectory: '<rootDir>/coverage',
+        roots: ['<rootDir>/src'],
     };
 };
