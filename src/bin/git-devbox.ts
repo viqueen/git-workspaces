@@ -66,4 +66,6 @@ const configureGitDevboxAnswers = async (
         );
 };
 
-configureGitDevboxQuestions().then(configureGitDevboxAnswers);
+configureGitDevboxQuestions()
+    .then(configureGitDevboxAnswers)
+    .catch(console.error);
