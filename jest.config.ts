@@ -9,6 +9,6 @@ export default async (): Promise<Config> => {
         testEnvironment: 'node',
         collectCoverage: true,
         coverageDirectory: '<rootDir>/coverage',
-        roots: ['<rootDir>/src'],
+        roots: ['<rootDir>/src']
     };
 };
