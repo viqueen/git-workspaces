@@ -20,4 +20,4 @@ const cloneRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
     });
 };
 
-getConfiguration().then(withProgram(cloneRepos));
+getConfiguration().then(withProgram(cloneRepos)).catch(console.error);

@@ -39,30 +39,31 @@ const configureGitDevboxAnswers = async (
     answer: Omit<Configuration, 'registry'> | undefined
 ) => {
     if (!answer) return;
-    simpleGit().addConfig(
-        'devbox.workspaces.root',
-        answer.workspacesRoot,
-        false,
-        GitConfigScope.global
-    );
-    simpleGit().addConfig(
-        'devbox.workspaces.default',
-        answer.workspacesDefault,
-        false,
-        GitConfigScope.global
-    );
-    simpleGit().addConfig(
-        'devbox.github.username',
-        answer.githubUsername,
-        false,
-        GitConfigScope.global
-    );
-    simpleGit().addConfig(
-        'devbox.github.personal.token',
-        answer.githubPersonalToken,
-        false,
-        GitConfigScope.global
-    );
+    await simpleGit()
+        .addConfig(
+            'devbox.workspaces.root',
+            answer.workspacesRoot,
+            false,
+            GitConfigScope.global
+        )
+        .addConfig(
+            'devbox.workspaces.default',
+            answer.workspacesDefault,
+            false,
+            GitConfigScope.global
+        )
+        .addConfig(
+            'devbox.github.username',
+            answer.githubUsername,
+            false,
+            GitConfigScope.global
+        )
+        .addConfig(
+            'devbox.github.personal.token',
+            answer.githubPersonalToken,
+            false,
+            GitConfigScope.global
+        );
 };
 
 configureGitDevboxQuestions().then(configureGitDevboxAnswers);

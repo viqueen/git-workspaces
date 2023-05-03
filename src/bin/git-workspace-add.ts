@@ -19,4 +19,4 @@ const addRepo: WithProgram = ({ registry }, program) => {
         });
 };
 
-getConfiguration().then(withProgram(addRepo));
+getConfiguration().then(withProgram(addRepo)).catch(console.error);

@@ -27,4 +27,5 @@ const target = process.argv.slice(2).shift();
 
 listMergedBranches({ target })
     .then(excludeOperationalBranches)
-    .then(selectAndDeleteBranches(/(?<branchName>.*)/));
+    .then(selectAndDeleteBranches(/(?<branchName>.*)/))
+    .catch(console.error);

@@ -14,4 +14,5 @@ const excludeOperationalBranches = async (branches: string[]) => {
 
 listRecentBranches()
     .then(excludeOperationalBranches)
-    .then(selectAndDeleteBranches(/\d{4}-\d{2}-\d{2} (?<branchName>.*)/, true));
+    .then(selectAndDeleteBranches(/\d{4}-\d{2}-\d{2} (?<branchName>.*)/, true))
+    .catch(console.error);

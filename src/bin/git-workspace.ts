@@ -50,4 +50,4 @@ const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
         });
 };
 
-getConfiguration().then(withProgram(listRepos));
+getConfiguration().then(withProgram(listRepos)).catch(console.error);

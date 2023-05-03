@@ -37,4 +37,4 @@ const githubSync: WithProgram = (
         });
 };
 
-getConfiguration().then(withProgram(githubSync));
+getConfiguration().then(withProgram(githubSync)).catch(console.error);
