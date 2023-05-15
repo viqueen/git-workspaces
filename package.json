@@ -1,6 +1,6 @@
 {
   "name": "git-devbox",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -12,7 +12,8 @@
     "git-sync-github": "dist/bin/git-sync-github.js",
     "git-workspace": "dist/bin/git-workspace.js",
     "git-workspace-add": "dist/bin/git-workspace-add.js",
-    "git-workspace-clone": "dist/bin/git-workspace-clone.js"
+    "git-workspace-clone": "dist/bin/git-workspace-clone.js",
+    "git-workspace-remove": "dist/bin/git-workspace-remove.js"
   },
   "scripts": {
     "build": "tsc",
