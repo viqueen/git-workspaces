@@ -2826,9 +2826,9 @@ level-supports@^2.0.1:
   integrity sha512-E486g1NCjW5cF78KGPrMDRBYzPuueMZ6VBXHT6gC7A8UYWGiM14fGgp+s/L1oFfDWSPV/+SFkYCmZ0SiESkRKA==
 
 leveldb-registry@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/leveldb-registry/-/leveldb-registry-1.1.1.tgz#dacb692ff98dd25177707026f6d4f7949a6087e7"
-  integrity sha512-RLCI2eJHJfgSeAdYl/Pz52ywxl6gd29uQ/OXPNi7w4wtSPcT4FpUdpOd+6KdByzQXhG2/mL5Ep7+IkKy/QqcQg==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/leveldb-registry/-/leveldb-registry-1.2.0.tgz#e4d7f39716071d6cc2b2aaa12509430bd7ad906a"
+  integrity sha512-c4gouH88jrBwhNdxmRj/BUL/ErV+8MrGoU0xfxNjBGfVIw85Isycl+cQmNiPjLD28i3crcWBD4T3nn081KZeew==
   dependencies:
     leveldown "^6.1.1"
     levelup "^5.1.1"
