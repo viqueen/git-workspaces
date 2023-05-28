@@ -16,7 +16,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { leveldbRegistry } from 'leveldb-registry';
+import { leveldbRegistry } from '@labset/leveldb-registry';
 
 import { Item } from '../lib';
 
