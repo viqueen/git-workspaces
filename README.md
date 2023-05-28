@@ -17,7 +17,7 @@ brew install git-devbox
 - with **npm** (not recommended)
 
 ```bash
-npm install git-devbox -g
+npm install @labset/git-devbox -g
 ```
 
 #### from source
