@@ -9,7 +9,7 @@ module.exports = {
       modules: true,
     },
   },
-  plugins: ["@typescript-eslint", "import"],
+  plugins: ["@typescript-eslint", "import", "@labset-eslint"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -21,6 +21,14 @@ module.exports = {
     node: true,
   },
   rules: {
+    "@labset-eslint/license-notice": [
+      "error",
+      {
+        license: "Apache-2.0",
+        copyRightYear: "2023",
+        copyRightName: "Hasnae Rehioui",
+      },
+    ],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
