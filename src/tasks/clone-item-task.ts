@@ -16,9 +16,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+import { CliProgressRunContext, Runnable } from '@labset/task-pool-executor';
 import { simpleGit } from 'simple-git';
 import type { SimpleGitProgressEvent } from 'simple-git';
-import { CliProgressRunContext, Runnable } from 'task-pool-executor';
 
 import { Item, itemLocation } from '../lib';
 

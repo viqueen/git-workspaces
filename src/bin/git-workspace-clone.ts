@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { withCliProgress } from 'task-pool-executor';
+import { withCliProgress } from '@labset/task-pool-executor';
 
 import { getConfiguration, itemFilter, WithProgram, withProgram } from '../lib';
 import { cloneItemTask } from '../tasks';
