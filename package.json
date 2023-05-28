@@ -1,6 +1,6 @@
 {
-  "name": "git-devbox",
-  "version": "3.4.0",
+  "name": "@labset/git-devbox",
+  "version": "3.5.0",
   "description": "git cli extensions",
   "preferGlobal": false,
   "bin": {
