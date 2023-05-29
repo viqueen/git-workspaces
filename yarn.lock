@@ -628,9 +628,9 @@
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
 "@labset-eslint/eslint-plugin@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@labset-eslint/eslint-plugin/-/eslint-plugin-1.2.0.tgz#0a1a7786980a85389ecfb97fa84f0b09e31e12d7"
-  integrity sha512-Mz3G4wUrQ2XhmcX/BCoIiuanbHGdPqxfW5ORCTe5Kx2pG9J3lsknnxXy1FToQ7ZUy1QvGqli6yU2X+VcqHgF0g==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@labset-eslint/eslint-plugin/-/eslint-plugin-1.3.0.tgz#25237e47ebc5c2ecfeab294457b80d4345dacf01"
+  integrity sha512-uB3zhuVPVwFkJTuQKQPcyI9VZnfPtJdjB4QoOXzEENWgCWbN7js/jsZ2GOuSxH5tkR+PrCagjX9A3RudiQFzuQ==
 
 "@labset/leveldb-registry@^1.3.0":
   version "1.3.0"
@@ -3586,14 +3586,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
-
-task-pool-executor@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/task-pool-executor/-/task-pool-executor-2.2.0.tgz#46ef51dd2fb77b6b17e87e52639a642e55b6247e"
-  integrity sha512-YhMGVkL8se9+/ZtoJnyI2gBR6vugtHWyEoEiRFoVN97oJhBve1nlKdKNx6qTeIztmFIANXjIb2ag78+VAQUmUw==
-  dependencies:
-    ansi-colors "^4.1.3"
-    cli-progress "^3.11.2"
 
 test-exclude@^6.0.0:
   version "6.0.0"
