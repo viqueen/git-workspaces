@@ -56,25 +56,25 @@ const configureGitWorkspaceAnswers = async (
     if (!answer) return;
     await simpleGit()
         .addConfig(
-            'git.workspaces.root',
+            'labset.workspaces.root',
             answer.workspacesRoot,
             false,
             GitConfigScope.global
         )
         .addConfig(
-            'git.workspaces.default',
+            'labset.workspaces.default',
             answer.workspacesDefault,
             false,
             GitConfigScope.global
         )
         .addConfig(
-            'git.workspaces.github.username',
+            'labset.github.username',
             answer.githubUsername,
             false,
             GitConfigScope.global
         )
         .addConfig(
-            'git.workspaces.github.personal.token',
+            'labset.github.personal.token',
             answer.githubPersonalToken,
             false,
             GitConfigScope.global
