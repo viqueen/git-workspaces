@@ -45,7 +45,10 @@ export const getConfiguration = async (): Promise<Configuration> => {
     const gitConfig = config as Omit<Configuration, 'registry'>;
     fs.mkdirSync(gitConfig.workspacesRoot, { recursive: true });
 
-    const registryPath = path.resolve(gitConfig.workspacesRoot, '.git-devbox');
+    const registryPath = path.resolve(
+        gitConfig.workspacesRoot,
+        '.git-workspace'
+    );
     const registry = leveldbRegistry<Item>({ localPath: registryPath });
     return { ...gitConfig, registry };
 };

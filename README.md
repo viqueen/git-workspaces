@@ -60,10 +60,10 @@ git workspace-config
 it will add the following git global config entries
 
 ```text
-labset.workspaces.root          # where you want all your workspaces to be
-labset.workspaces.default       # your default workspace, i.e open-source vs work
-labset.github.username          # your github username
-labset.github.personal.token    # your github personal access token
+git.workspaces.root                     # where you want all your workspaces to be
+git.workspaces.default                  # your default workspace, i.e open-source vs work
+git.workspaces.github.username          # your github username
+git.workspaces.github.personal.token    # your github personal access token
 ```
 
 - add a repo to your workspace

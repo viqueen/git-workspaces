@@ -23,7 +23,7 @@ import { simpleGit, GitConfigScope } from 'simple-git';
 
 import { Configuration } from '../lib';
 
-const configureGitDevboxQuestions = async () => {
+const configureGitWorkspaceQuestions = async () => {
     return prompt([
         {
             name: 'workspacesRoot',
@@ -50,37 +50,37 @@ const configureGitDevboxQuestions = async () => {
     ]);
 };
 
-const configureGitDevboxAnswers = async (
+const configureGitWorkspaceAnswers = async (
     answer: Omit<Configuration, 'registry'> | undefined
 ) => {
     if (!answer) return;
     await simpleGit()
         .addConfig(
-            'devbox.workspaces.root',
+            'git.workspaces.root',
             answer.workspacesRoot,
             false,
             GitConfigScope.global
         )
         .addConfig(
-            'devbox.workspaces.default',
+            'git.workspaces.default',
             answer.workspacesDefault,
             false,
             GitConfigScope.global
         )
         .addConfig(
-            'devbox.github.username',
+            'git.workspaces.github.username',
             answer.githubUsername,
             false,
             GitConfigScope.global
         )
         .addConfig(
-            'devbox.github.personal.token',
+            'git.workspaces.github.personal.token',
             answer.githubPersonalToken,
             false,
             GitConfigScope.global
         );
 };
 
-configureGitDevboxQuestions()
-    .then(configureGitDevboxAnswers)
+configureGitWorkspaceQuestions()
+    .then(configureGitWorkspaceAnswers)
     .catch(console.error);
