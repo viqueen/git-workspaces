@@ -15,7 +15,7 @@
  */
 import axios from 'axios';
 
-import { Item, fromInput, linkParser, Link } from '../lib';
+import { fromInput, Item, Link, linkParser } from '../../lib';
 
 type ItemCallback = (item: Item) => Promise<Item>;
 
@@ -32,20 +32,18 @@ type GithubItemStreamProps = {
     githubPersonalToken: string;
 
     workspace: string;
-    kind: string;
-    namespace: string;
+    streamUrl: string;
     handler: ItemCallback;
     githubItemFilter: GithubItemFilter;
 };
 
-export const githubItemStream = async ({
+const githubItemStream = async ({
     githubUsername,
     githubPersonalToken,
-    workspace,
-    kind,
-    namespace,
+    streamUrl,
+    githubItemFilter,
     handler,
-    githubItemFilter
+    workspace
 }: GithubItemStreamProps) => {
     const client = axios.create({
         baseURL: `https://api.github.com`,
@@ -54,8 +52,6 @@ export const githubItemStream = async ({
             password: githubPersonalToken
         }
     });
-
-    const streamUrl = `/${kind}/${namespace}/repos`;
 
     const execute = async (params: unknown | undefined): Promise<void> => {
         if (!params) return Promise.resolve();
@@ -89,3 +85,5 @@ export const githubItemStream = async ({
 
     await execute({});
 };
+
+export { githubItemStream };

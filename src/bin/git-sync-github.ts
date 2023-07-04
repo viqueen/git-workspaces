@@ -30,17 +30,15 @@ const githubSync: WithProgram = (
         .description('sync workspace with github')
         .action(async (opts) => {
             const { workspace, user, org, archived, forked } = opts;
-            if (!user && !org) {
-                console.error(
-                    `missing input options: --user|--org <namespace>`
-                );
-                return;
-            }
+            const streamUrl = user
+                ? `/users/${user}/repos`
+                : org
+                ? `/orgs/${org}/repos`
+                : `/user/repos?affiliation=owner`;
             await githubItemStream({
                 githubUsername,
                 githubPersonalToken,
-                kind: user ? 'users' : 'orgs',
-                namespace: user ?? org,
+                streamUrl,
                 workspace,
                 handler: registry.add,
                 githubItemFilter: (item) => {

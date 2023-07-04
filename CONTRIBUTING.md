@@ -17,7 +17,7 @@ brew install yarn
 - create a fork of the repo, clone it, and install the dependencies
 
 ```bash
-cd git-devbox
+cd git-workspace
 nvm install
 yarn
 ```

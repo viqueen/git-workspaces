@@ -34,9 +34,9 @@ export type Configuration = {
 export const getConfiguration = async (): Promise<Configuration> => {
     const list = await simpleGit().listConfig(GitConfigScope.global);
     const config = Object.entries(list.all)
-        .filter(([key]) => key.startsWith('devbox.'))
+        .filter(([key]) => key.startsWith('labset.'))
         .reduce((prev, current) => {
-            const key = current[0].replace(/devbox\./, '');
+            const key = current[0].replace(/labset\./, '');
             const camelCaseKey = camelCase(key);
             prev[camelCaseKey] = current[1] as string;
             return prev;
@@ -45,7 +45,10 @@ export const getConfiguration = async (): Promise<Configuration> => {
     const gitConfig = config as Omit<Configuration, 'registry'>;
     fs.mkdirSync(gitConfig.workspacesRoot, { recursive: true });
 
-    const registryPath = path.resolve(gitConfig.workspacesRoot, '.git-devbox');
+    const registryPath = path.resolve(
+        gitConfig.workspacesRoot,
+        '.git-workspace'
+    );
     const registry = leveldbRegistry<Item>({ localPath: registryPath });
     return { ...gitConfig, registry };
 };

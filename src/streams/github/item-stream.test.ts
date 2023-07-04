@@ -18,9 +18,9 @@ import * as path from 'path';
 
 import { leveldbRegistry } from '@labset/leveldb-registry';
 
-import { Item } from '../lib';
+import { Item } from '../../lib';
 
-import { githubItemStream } from './github-item-stream';
+import { githubItemStream } from './item-stream';
 
 describe('github-item-stream', () => {
     const testRegistryPath = path.resolve(
@@ -38,8 +38,7 @@ describe('github-item-stream', () => {
             githubUsername: '',
             githubPersonalToken: '',
             workspace: 'tools',
-            kind: 'orgs',
-            namespace: 'labset',
+            streamUrl: `/orgs/labset/repos`,
             handler: registry.add,
             githubItemFilter: () => true
         });
