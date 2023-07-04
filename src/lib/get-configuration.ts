@@ -25,6 +25,10 @@ import { Item } from './types';
 export type Configuration = {
     workspacesRoot: string;
     workspacesDefault: string;
+
+    bitbucketCloudUsername: string;
+    bitbucketCloudToken: string;
+
     githubUsername: string;
     githubPersonalToken: string;
 
