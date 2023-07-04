@@ -13,6 +13,7 @@
     "git-workspace": "dist/bin/git-workspace.js",
     "git-workspace-add": "dist/bin/git-workspace-add.js",
     "git-workspace-clone": "dist/bin/git-workspace-clone.js",
+    "git-workspace-exec": "dist/bin/git-workspace-exec.js",
     "git-workspace-remove": "dist/bin/git-workspace-remove.js"
   },
   "scripts": {
