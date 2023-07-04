@@ -1,4 +1,4 @@
-## git-devbox
+## git-workspace
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=viqueen_git-devbox&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=viqueen_git-devbox)
 [![Known Vulnerabilities](https://snyk.io/test/github/viqueen/git-devbox/badge.svg?targetFile=package.json)](https://snyk.io/test/github/viqueen/git-devbox?targetFile=package.json)
@@ -17,14 +17,14 @@ brew install git-devbox
 - with **npm** (not recommended)
 
 ```bash
-npm install @labset/git-devbox -g
+npm install @labset/git-workspace -g
 ```
 
 #### from source
 
 ```bash
-git clone https://github.com/viqueen/git-devbox.git
-cd git-devbox
+git clone https://github.com/viqueen/git-workspace.git
+cd git-workspace
 npm install
 npm link
 ```
@@ -54,16 +54,16 @@ git merged
 - start by some configuration
 
 ```bash
-git devbox
+git workspace-config
 ```
 
 it will add the following git global config entries
 
 ```text
-devbox.workspaces.root          # where you want all your workspaces to be
-devbox.workspaces.default       # your default workspace, i.e open-source vs work
-devbox.github.username          # your github username
-devbox.github.personal.token    # your github personal access token
+labset.workspaces.root          # where you want all your workspaces to be
+labset.workspaces.default       # your default workspace, i.e open-source vs work
+labset.github.username          # your github username
+labset.github.personal.token    # your github personal access token
 ```
 
 - add a repo to your workspace
