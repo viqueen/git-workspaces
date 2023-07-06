@@ -102,3 +102,9 @@ git sync-github --user <namespace> --forked   # include forked
 ```bash
 git sync-bitbucket --namespace <namespace>
 ```
+
+- execute a script across your git workspace
+
+```bash
+git workspace-exec <script-file> [args...]
+```
