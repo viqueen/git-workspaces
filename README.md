@@ -90,8 +90,15 @@ git workspace-clone -w <name>
 - sync workspace with GitHub, it requires GitHub username and token to be set when working with private repos
 
 ```bash
+git sync-github                               # logged in user repos
 git sync-github --user <namespace>
 git sync-github --org <namespace>
 git sync-github --org <namespace> --archived  # include archived
 git sync-github --user <namespace> --forked   # include forked
+```
+
+- sync workspace with Bitbucket Cloud, it requires Bitbucket username and token to be configured
+
+```bash
+git sync-bitbucket --namespace <namespace>
 ```
