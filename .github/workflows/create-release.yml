@@ -1,4 +1,4 @@
-name: "@labset/git-workspace Publish"
+name: "@labset/git-workspaces Publish"
 
 on:
   release:

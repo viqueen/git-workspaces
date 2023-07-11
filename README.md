@@ -1,4 +1,4 @@
-## git-workspace
+## git-workspaces
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=viqueen_git-devbox&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=viqueen_git-devbox)
 [![Known Vulnerabilities](https://snyk.io/test/github/viqueen/git-devbox/badge.svg?targetFile=package.json)](https://snyk.io/test/github/viqueen/git-devbox?targetFile=package.json)
@@ -10,20 +10,20 @@
 - with **homebrew** (preferred)
 
 ```bash
-brew tap viqueen/git-devbox
-brew install git-devbox
+brew tap viqueen/labset
+brew install git-workspaces
 ```
 
 - with **npm** (not recommended)
 
 ```bash
-npm install @labset/git-workspace -g
+npm install @labset/git-workspaces -g
 ```
 
 #### from source
 
 ```bash
-git clone https://github.com/viqueen/git-workspace.git
+git clone https://github.com/viqueen/git-workspaces.git
 cd git-workspace
 npm install
 npm link

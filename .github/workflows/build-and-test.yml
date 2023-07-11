@@ -1,4 +1,4 @@
-name: "@labset/git-workspace Build and Test"
+name: "@labset/git-workspaces Build and Test"
 on:
   push:
     branches:

@@ -1,7 +1,7 @@
 {
-  "name": "@labset/git-workspace",
-  "version": "1.0.0",
-  "description": "git cli extensions",
+  "name": "@labset/git-workspaces",
+  "version": "1.0.1",
+  "description": "git workspace cli extensions",
   "preferGlobal": false,
   "bin": {
     "git-devbox": "dist/bin/git-devbox.js",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viqueen/git-workspace.git"
+    "url": "git+https://github.com/viqueen/git-workspaces.git"
   },
   "files": [
     "dist"
@@ -39,9 +39,9 @@
   "author": "Hasnae R.",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/viqueen/git-workspace/issues"
+    "url": "https://github.com/viqueen/git-workspaces/issues"
   },
-  "homepage": "https://github.com/viqueen/git-workspace#readme",
+  "homepage": "https://github.com/viqueen/git-workspaces#readme",
   "devDependencies": {
     "@labset-eslint/eslint-plugin": "^1.2.0",
     "@types/cli-progress": "^3.11.0",
