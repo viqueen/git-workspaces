@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 /**
  * Copyright 2023 Hasnae Rehioui
  *
@@ -20,12 +18,12 @@ import { simpleGit } from 'simple-git';
 import { excludeOperationalBranches } from '../lib/exclude-operational-branches';
 import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
 
-const listMergedBranches = async ({ target }: { target?: string }) => {
-    const params = ['--merged'];
-    const mergedWithTarget =
-        target !== undefined ? [...params, target] : [...params];
+const listSquashedBranches = async ({ target }: { target?: string }) => {
+    const params = ['--no-contains'];
+    const squashedWithTarget =
+        target !== undefined ? [...params, target] : [...params, 'origin/main'];
     return simpleGit()
-        .branch(mergedWithTarget)
+        .branch(squashedWithTarget)
         .then((output) => {
             const { all, current } = output;
             return all.filter((i) => i !== current);
@@ -34,7 +32,7 @@ const listMergedBranches = async ({ target }: { target?: string }) => {
 
 const target = process.argv.slice(2).shift();
 
-listMergedBranches({ target })
+listSquashedBranches({ target })
     .then(excludeOperationalBranches)
     .then(selectAndDeleteBranches(/(?<branchName>.*)/))
     .catch(console.error);

@@ -7,6 +7,7 @@
     "git-list-remote": "dist/bin/git-list-remote.js",
     "git-merged": "dist/bin/git-merged.js",
     "git-recent": "dist/bin/git-recent.js",
+    "git-squashed": "dist/bin/git-squashed.js",
     "git-stale": "dist/bin/git-stale.js",
     "git-sync-bitbucket": "dist/bin/git-sync-bitbucket.js",
     "git-sync-github": "dist/bin/git-sync-github.js",
