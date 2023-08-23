@@ -36,5 +36,5 @@ const target = process.argv.slice(2).shift();
 
 listSquashedBranches({ target })
     .then(excludeOperationalBranches)
-    .then(selectAndDeleteBranches(/(?<branchName>.*)/))
+    .then(selectAndDeleteBranches(/(?<branchName>.*)/, true))
     .catch(console.error);
