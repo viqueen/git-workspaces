@@ -747,9 +747,9 @@
     "@babel/types" "^7.20.7"
 
 "@types/cli-progress@^3.11.0":
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/@types/cli-progress/-/cli-progress-3.11.0.tgz#ec79df99b26757c3d1c7170af8422e0fc95eef7e"
-  integrity sha512-XhXhBv1R/q2ahF3BM7qT5HLzJNlIL0wbcGyZVjqOTqAybAnsLisd7gy1UCyIqpL+5Iv6XhlSyzjLCnI2sIdbCg==
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/@types/cli-progress/-/cli-progress-3.11.1.tgz#93664d42a0b7b2fc495bec8a470c60001d3c3d68"
+  integrity sha512-d9iA+0uys9N6wV/SvZkDEWMYwv+e/mhWPLa6lncQ1ZqrC3mXHnDmidanVGoVGnmCQ3mCxyu9S09Y2s18u5wL5w==
   dependencies:
     "@types/node" "*"
 
@@ -811,9 +811,9 @@
   integrity sha512-BMVOiWs0uNxHVlHBgzTIqJYmj+PgCo4euloGF+5m4okL3rEYzM2EEv78mw8zWSMM57dM7kVIgJ2QDvwHSoCI5g==
 
 "@types/node@*":
-  version "20.5.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.4.tgz#4666fb40f9974d60c53c4ff554315860ba4feab8"
-  integrity sha512-Y9vbIAoM31djQZrPYjpTLo0XlaSwOIsrlfE3LpulZeRblttsLQRFRlBAppW0LOxyT3ALj2M5vU1ucQQayQH3jA==
+  version "20.5.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.9.tgz#a70ec9d8fa0180a314c3ede0e20ea56ff71aed9a"
+  integrity sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==
 
 "@types/node@^18.14.0":
   version "18.17.11"
