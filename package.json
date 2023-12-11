@@ -68,6 +68,6 @@
     "commander": "^11.0.0",
     "inquirer": "^8.2.5",
     "lodash": "^4.17.21",
-    "simple-git": "^3.20.0"
+    "simple-git": "^3.21.0"
   }
 }
