@@ -33,8 +33,8 @@ const githubSync: WithProgram = (
             const streamUrl = user
                 ? `/users/${user}/repos`
                 : org
-                ? `/orgs/${org}/repos`
-                : `/user/repos?affiliation=owner`;
+                  ? `/orgs/${org}/repos`
+                  : `/user/repos?affiliation=owner`;
             await githubItemStream({
                 githubUsername,
                 githubPersonalToken,
