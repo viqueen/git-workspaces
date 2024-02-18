@@ -29,9 +29,10 @@ const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
         .option('-dl, --display-location', 'display location only', false)
         .option('-dc, --display-connection', 'display connection only', false)
         .option('-ds, --display-slug', 'display slug only', false)
+        .option('-cl, --cloned', 'display cloned repos only', false)
         .description('list repos registered on workspace')
         .action(async (opts) => {
-            const { workspace, namespace, host, slug, keyword } = opts;
+            const { workspace, namespace, host, slug, keyword, cloned } = opts;
             await registry
                 .list(itemFilter({ workspace, namespace, host, slug, keyword }))
                 .then(async (items) => {
@@ -42,13 +43,16 @@ const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
                     );
                 })
                 .then((itemsWithStatus) => {
+                    const filtered = itemsWithStatus.filter((item) => {
+                        return cloned ? item.status !== null : true;
+                    });
                     const { displayLocation, displayConnection, displaySlug } =
                         opts;
                     const displayOptionEnabled =
                         displayLocation || displayConnection || displaySlug;
 
                     if (!displayOptionEnabled) {
-                        console.table(itemsWithStatus, [
+                        console.table(filtered, [
                             'workspace',
                             'namespace',
                             'slug',
@@ -57,7 +61,7 @@ const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
                         return;
                     }
 
-                    itemsWithStatus.forEach((item) => {
+                    filtered.forEach((item) => {
                         if (displayLocation) {
                             const target = itemLocation({
                                 workspacesRoot,
