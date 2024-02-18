@@ -22,6 +22,7 @@ import {
     withProgram,
     WithProgram
 } from '../lib';
+import { itemStatus } from '../lib/item-status';
 
 const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
     program
@@ -33,22 +34,30 @@ const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
             const { workspace, namespace, host, slug, keyword } = opts;
             await registry
                 .list(itemFilter({ workspace, namespace, host, slug, keyword }))
-                .then((items) => {
+                .then(async (items) => {
+                    return await Promise.all(
+                        items.map((item) =>
+                            itemStatus({ workspacesRoot, item })
+                        )
+                    );
+                })
+                .then((itemsWithStatus) => {
                     const { displayLocation, displayConnection, displaySlug } =
                         opts;
                     const displayOptionEnabled =
                         displayLocation || displayConnection || displaySlug;
 
                     if (!displayOptionEnabled) {
-                        console.table(items, [
+                        console.table(itemsWithStatus, [
                             'workspace',
                             'namespace',
-                            'slug'
+                            'slug',
+                            'status'
                         ]);
                         return;
                     }
 
-                    items.forEach((item) => {
+                    itemsWithStatus.forEach((item) => {
                         if (displayLocation) {
                             const target = itemLocation({
                                 workspacesRoot,

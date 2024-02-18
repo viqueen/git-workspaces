@@ -27,6 +27,4 @@ export type Item = Input &
         slug: string;
     };
 
-export interface ItemFilter {
-    (item: Item): boolean;
-}
+export type ItemFilter = (item: Item) => boolean;
