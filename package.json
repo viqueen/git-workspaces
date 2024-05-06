@@ -1,6 +1,6 @@
 {
   "name": "@labset/git-workspaces",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "git workspace cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -11,7 +11,7 @@
     "git-stale": "dist/bin/git-stale.js",
     "git-sync-bitbucket": "dist/bin/git-sync-bitbucket.js",
     "git-sync-github": "dist/bin/git-sync-github.js",
-    "git-tidy": "dist/bin/git-tydy.js",
+    "git-tidy": "dist/bin/git-tidy.js",
     "git-workspace": "dist/bin/git-workspace.js",
     "git-workspace-add": "dist/bin/git-workspace-add.js",
     "git-workspace-clone": "dist/bin/git-workspace-clone.js",
