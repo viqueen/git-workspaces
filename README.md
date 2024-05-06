@@ -63,15 +63,13 @@ git squashed origin/master
 git tidy
 ```
 
-````bash
-
 #### setup git workspaces
 
 - start by some configuration
 
 ```bash
 git workspace-config
-````
+```
 
 it will add the following git global config entries
 
