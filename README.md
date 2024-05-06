@@ -45,9 +45,25 @@ git recent
 
 ```bash
 git merged
+git merged origin/master
 ```
 
 ![git merged example](./docs/images/git-merged.png)
+
+- list squashed git branches that you still have locally, multi select the ones you want to delete
+
+```bash
+git squashed
+git squashed origin/master
+```
+
+- list recent branches that you've interacted with, multi select the ones you want to delete
+
+```bash
+git tidy
+```
+
+````bash
 
 #### setup git workspaces
 
@@ -55,7 +71,7 @@ git merged
 
 ```bash
 git workspace-config
-```
+````
 
 it will add the following git global config entries
 
