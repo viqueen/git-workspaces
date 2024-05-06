@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 /**
  * Copyright 2023 Hasnae Rehioui
  *
@@ -13,13 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const excludeOperationalBranches = async (branches: string[]) => {
-    return branches.filter(
-        (branch) =>
-            !branch.match(
-                /^(\d{4}-\d{2}-\d{2} )?(main|master|production|demo|website|development)$/
-            )
-    );
-};
 
-export { excludeOperationalBranches };
+import { excludeOperationalBranches } from '../lib/exclude-operational-branches';
+import { listRecentBranches } from '../lib/list-recent-branches';
+import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
+
+listRecentBranches()
+    .then(excludeOperationalBranches)
+    .then(selectAndDeleteBranches(/(?<branchName>.*)/, true))
+    .catch(console.error);
