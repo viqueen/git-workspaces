@@ -8,7 +8,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "noImplicitReturns": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "target": "ES2018"
   },
   "exclude": [
     "node_modules",
