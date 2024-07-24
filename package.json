@@ -18,7 +18,8 @@
     "git-workspace-config": "dist/bin/git-workspace-config.js",
     "git-workspace-exec": "dist/bin/git-workspace-exec.js",
     "git-workspace-prs": "dist/bin/git-workspace-prs.js",
-    "git-workspace-remove": "dist/bin/git-workspace-remove.js"
+    "git-workspace-remove": "dist/bin/git-workspace-remove.js",
+    "git-workspaces-sync": "dist/bin/git-workspaces-sync.js"
   },
   "scripts": {
     "build": "tsc",

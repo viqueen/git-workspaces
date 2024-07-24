@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 /**
  * Copyright 2023 Hasnae Rehioui
  *
@@ -21,18 +19,18 @@ import {
     getConfiguration,
     Item,
     itemFilter,
-    WithProgram,
-    withProgram
+    withProgram,
+    WithProgram
 } from '../lib';
-import { cloneItemTask } from '../tasks';
+import { syncItemTask } from '../tasks/sync-item-task';
 
-const cloneRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
-    program.description('clone workspace repos').action(async (opts) => {
+const syncRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
+    program.description('sync workspace repos').action(async (opts) => {
         const { workspace, namespace, host, slug, keyword } = opts;
         await registry
             .list(itemFilter({ workspace, namespace, host, slug, keyword }))
-            .then((items) => {
-                return itemsHandler({ items, workspacesRoot });
+            .then(async (items) => {
+                return await itemsHandler({ items, workspacesRoot });
             });
     });
 };
@@ -46,9 +44,9 @@ const itemsHandler = ({
 }) => {
     return withCliProgress((taskPool) => {
         items
-            .map(cloneItemTask({ workspacesRoot }))
+            .map(syncItemTask({ workspacesRoot }))
             .forEach((t) => t && taskPool.submit(t));
     });
 };
 
-getConfiguration().then(withProgram(cloneRepos)).catch(console.error);
+getConfiguration().then(withProgram(syncRepos)).catch(console.error);
