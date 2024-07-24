@@ -17,6 +17,7 @@
     "git-workspace-clone": "dist/bin/git-workspace-clone.js",
     "git-workspace-config": "dist/bin/git-workspace-config.js",
     "git-workspace-exec": "dist/bin/git-workspace-exec.js",
+    "git-workspace-prs": "dist/bin/git-workspace-prs.js",
     "git-workspace-remove": "dist/bin/git-workspace-remove.js"
   },
   "scripts": {
