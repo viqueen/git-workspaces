@@ -1,6 +1,6 @@
 {
   "name": "@labset/git-workspaces",
-  "version": "4.2.1",
+  "version": "5.0.0",
   "description": "git workspace cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@labset-eslint/eslint-plugin": "^1.2.0",
     "@types/cli-progress": "^3.11.0",
-    "@types/inquirer": "^8.2.4",
+    "@types/inquirer": "^9.0.0",
     "@types/jest": "^29.4.0",
     "@types/lodash": "^4.17.0",
     "@types/node": "^20.0.0",
