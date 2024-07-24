@@ -1,6 +1,6 @@
 {
   "name": "@labset/git-workspaces",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "git workspace cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -19,7 +19,7 @@
     "git-workspace-exec": "dist/bin/git-workspace-exec.js",
     "git-workspace-prs": "dist/bin/git-workspace-prs.js",
     "git-workspace-remove": "dist/bin/git-workspace-remove.js",
-    "git-workspaces-sync": "dist/bin/git-workspaces-sync.js"
+    "git-workspace-sync": "dist/bin/git-workspace-sync.js"
   },
   "scripts": {
     "build": "tsc",
