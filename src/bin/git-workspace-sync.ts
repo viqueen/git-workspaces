@@ -24,7 +24,7 @@ import {
     withProgram,
     WithProgram
 } from '../lib';
-import { syncItemTask } from '../tasks/sync-item-task';
+import { syncItemTask } from '../tasks';
 
 const syncRepos: WithProgram = ({ registry, workspacesRoot }, program) => {
     program.description('sync workspace repos').action(async (opts) => {
