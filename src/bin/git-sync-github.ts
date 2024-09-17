@@ -18,6 +18,16 @@
 import { getConfiguration, WithProgram, withProgram } from '../lib';
 import { githubItemStream } from '../streams';
 
+const getStreamUrl = ({ user, org }: { user?: string; org?: string }) => {
+    if (user) {
+        return `/users/${user}/repos`;
+    }
+    if (org) {
+        return `/orgs/${org}/repos`;
+    }
+    return `/user/repos?affiliation=owner`;
+}
+
 const githubSync: WithProgram = (
     { githubUsername, githubPersonalToken, registry },
     program
@@ -30,11 +40,7 @@ const githubSync: WithProgram = (
         .description('sync workspace with github')
         .action(async (opts) => {
             const { workspace, user, org, archived, forked } = opts;
-            const streamUrl = user
-                ? `/users/${user}/repos`
-                : org
-                  ? `/orgs/${org}/repos`
-                  : `/user/repos?affiliation=owner`;
+            const streamUrl = getStreamUrl({ user, org })
             await githubItemStream({
                 githubUsername,
                 githubPersonalToken,
