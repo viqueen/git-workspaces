@@ -28,7 +28,7 @@ const toMap = (searchParams: URLSearchParams) => {
 };
 
 export const linkParser = (link: string): Link | undefined => {
-    const matcher = link.trim().match(LINK_PATTERN);
+    const matcher = LINK_PATTERN.exec(link.trim());
 
     if (!matcher) {
         return;

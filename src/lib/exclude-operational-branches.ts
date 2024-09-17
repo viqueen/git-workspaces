@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+const mainBranches =
+    /^(\d{4}-\d{2}-\d{2} )?(main|master|production|demo|website|development)$/;
+
 const excludeOperationalBranches = async (branches: string[]) => {
-    return branches.filter(
-        (branch) =>
-            !branch.match(
-                /^(\d{4}-\d{2}-\d{2} )?(main|master|production|demo|website|development)$/
-            )
-    );
+    return branches.filter((branch) => !mainBranches.exec(branch));
 };
 
 export { excludeOperationalBranches };
