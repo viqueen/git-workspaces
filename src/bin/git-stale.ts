@@ -18,13 +18,11 @@
 import { listRecentBranches } from '../lib/list-recent-branches';
 import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
 
-const mainBranches = /^\d{4}-\d{2}-\d{2} (main|master|production|demo|website|development)$/;
+const mainBranches =
+    /^\d{4}-\d{2}-\d{2} (main|master|production|demo|website|development)$/;
 
 const excludeOperationalBranches = async (branches: string[]) => {
-    return branches.filter(
-        (branch) =>
-            !mainBranches.exec(branch)
-    );
+    return branches.filter((branch) => !mainBranches.exec(branch));
 };
 
 listRecentBranches()

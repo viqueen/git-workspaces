@@ -26,7 +26,7 @@ const getStreamUrl = ({ user, org }: { user?: string; org?: string }) => {
         return `/orgs/${org}/repos`;
     }
     return `/user/repos?affiliation=owner`;
-}
+};
 
 const githubSync: WithProgram = (
     { githubUsername, githubPersonalToken, registry },
@@ -40,7 +40,7 @@ const githubSync: WithProgram = (
         .description('sync workspace with github')
         .action(async (opts) => {
             const { workspace, user, org, archived, forked } = opts;
-            const streamUrl = getStreamUrl({ user, org })
+            const streamUrl = getStreamUrl({ user, org });
             await githubItemStream({
                 githubUsername,
                 githubPersonalToken,
