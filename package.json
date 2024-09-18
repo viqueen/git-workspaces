@@ -67,7 +67,7 @@
   "dependencies": {
     "@labset/leveldb-registry": "^1.3.0",
     "@labset/task-pool-executor": "^2.3.0",
-    "axios": "^1.6.5",
+    "axios": "^1.7.5",
     "commander": "^12.0.0",
     "inquirer": "^8.2.5",
     "lodash": "^4.17.21",
