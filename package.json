@@ -23,6 +23,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "build:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "format:check": "prettier --check .",
@@ -62,7 +63,7 @@
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "5.4.5"
   },
   "dependencies": {
     "@labset/leveldb-registry": "^1.3.0",
