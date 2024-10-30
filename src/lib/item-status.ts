@@ -30,7 +30,7 @@ const itemStatus = async ({
     item
 }: ItemStatusProps): Promise<Item & { status: string | null }> => {
     const location = itemLocation({ workspacesRoot, item });
-    if (!fs.existsSync(location)) {
+    if (!fs.existsSync(location) || !fs.existsSync(`${location}/.git`)) {
         return { ...item, status: null };
     }
     const status = await simpleGit(location)
