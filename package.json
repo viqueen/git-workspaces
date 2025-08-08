@@ -1,6 +1,6 @@
 {
   "name": "@labset/git-workspaces",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "git workspace cli extensions",
   "preferGlobal": false,
   "bin": {
@@ -68,7 +68,7 @@
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   },
   "dependencies": {
     "@labset/leveldb-registry": "^1.3.0",
