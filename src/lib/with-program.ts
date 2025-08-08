@@ -35,8 +35,8 @@ export const withProgram = (fn: WithProgram) => {
         program.option('-s, --slug <slug>', 'filter by name or slug');
         program.option('-k, --keyword <keyword>', 'filter by keyword');
         fn(configuration, program);
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        program.version(require('../../package.json').version);
+        const packageJson = await import('../../package.json');
+        program.version(packageJson.version);
         program.parse(process.argv);
     };
 };
