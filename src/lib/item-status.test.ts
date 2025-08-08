@@ -15,7 +15,7 @@
  */
 import fs from 'fs';
 
-import { simpleGit } from 'simple-git';
+import { type SimpleGit, simpleGit } from 'simple-git';
 
 import { itemStatus } from './item-status';
 import { Item } from './types';
@@ -98,7 +98,7 @@ describe('itemStatus', () => {
         };
 
         mockFs.existsSync.mockReturnValue(true);
-        mockSimpleGit.mockReturnValue(mockGitInstance as any);
+        mockSimpleGit.mockReturnValue(mockGitInstance as unknown as SimpleGit);
 
         const result = await itemStatus({ workspacesRoot, item: mockItem });
 
@@ -132,7 +132,7 @@ describe('itemStatus', () => {
         };
 
         mockFs.existsSync.mockReturnValue(true);
-        mockSimpleGit.mockReturnValue(mockGitInstance as any);
+        mockSimpleGit.mockReturnValue(mockGitInstance as unknown as SimpleGit);
 
         const result = await itemStatus({ workspacesRoot, item: mockItem });
 
@@ -149,7 +149,7 @@ describe('itemStatus', () => {
         };
 
         mockFs.existsSync.mockReturnValue(true);
-        mockSimpleGit.mockReturnValue(mockGitInstance as any);
+        mockSimpleGit.mockReturnValue(mockGitInstance as unknown as SimpleGit);
 
         await expect(
             itemStatus({ workspacesRoot, item: mockItem })
@@ -177,7 +177,7 @@ describe('itemStatus', () => {
         };
 
         mockFs.existsSync.mockReturnValue(true);
-        mockSimpleGit.mockReturnValue(mockGitInstance as any);
+        mockSimpleGit.mockReturnValue(mockGitInstance as unknown as SimpleGit);
 
         const result = await itemStatus({ workspacesRoot, item: mockItem });
 
@@ -208,7 +208,7 @@ describe('itemStatus', () => {
         };
 
         mockFs.existsSync.mockReturnValue(true);
-        mockSimpleGit.mockReturnValue(mockGitInstance as any);
+        mockSimpleGit.mockReturnValue(mockGitInstance as unknown as SimpleGit);
 
         const result = await itemStatus({
             workspacesRoot: customWorkspacesRoot,
@@ -244,7 +244,7 @@ describe('itemStatus', () => {
         };
 
         mockFs.existsSync.mockReturnValue(true);
-        mockSimpleGit.mockReturnValue(mockGitInstance as any);
+        mockSimpleGit.mockReturnValue(mockGitInstance as unknown as SimpleGit);
 
         const result = await itemStatus({ workspacesRoot, item: mockItem });
 
