@@ -22,6 +22,12 @@ npm ci
 npx husky install
 ```
 
+- invite claude
+
+```bash
+npm run claude
+```
+
 - build it in watch mode
 
 ```bash

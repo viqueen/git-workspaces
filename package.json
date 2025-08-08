@@ -22,6 +22,7 @@
     "git-workspace-sync": "dist/bin/git-workspace-sync.js"
   },
   "scripts": {
+    "claude": "claude",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "test": "jest",
@@ -49,6 +50,7 @@
   },
   "homepage": "https://github.com/viqueen/git-workspaces#readme",
   "devDependencies": {
+    "@anthropic-ai/claude-code": "^1.0.71",
     "@labset-eslint/eslint-plugin": "^1.2.0",
     "@types/cli-progress": "^3.11.0",
     "@types/inquirer": "^8.2.4",
