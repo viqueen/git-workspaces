@@ -6,12 +6,6 @@ I use **[nvm](https://github.com/nvm-sh/nvm)** to manage my node versions.
 brew install nvm
 ```
 
-I use **[yarn](https://yarnpkg.com/)** as my node package manager
-
-```bash
-brew install yarn
-```
-
 ## development setup
 
 - create a fork of the repo, clone it, and install the dependencies
@@ -19,7 +13,7 @@ brew install yarn
 ```bash
 cd git-workspace
 nvm install
-yarn
+npm ci
 ```
 
 - setup git hooks
