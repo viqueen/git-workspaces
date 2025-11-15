@@ -75,7 +75,7 @@
     "@labset/task-pool-executor": "^2.3.0",
     "axios": "^1.7.7",
     "commander": "^13.0.0",
-    "inquirer": "^8.2.5",
+    "inquirer": "^8.2.7",
     "lodash": "^4.17.21",
     "simple-git": "^3.26.0"
   }
