@@ -9,15 +9,13 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn format:check
-      - run: yarn lint
-      - run: yarn test
-      - run: yarn build
-      - run: npm publish --access public
+      - uses: jdx/mise-action@v2
+      - run: pnpm install
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm publish --access public --no-git-checks
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+          NPM_CONFIG_//registry.npmjs.org/:_authToken: ${{secrets.NPM_TOKEN}}
