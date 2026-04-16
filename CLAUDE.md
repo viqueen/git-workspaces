@@ -6,21 +6,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Development
 
-- `npm install` - Install dependencies
-- `npm run build` - Compile TypeScript to JavaScript (outputs to dist/)
-- `npm run build:watch` - Compile TypeScript in watch mode
-- `npm test` - Run all tests with Jest and generate coverage
-- `npm run test:watch` - Run tests in watch mode
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check code formatting
-- `npm run lint` - Run ESLint on src/ directory
+- `pnpm install` - Install dependencies
+- `pnpm build` - Compile TypeScript to JavaScript (outputs to dist/)
+- `pnpm build:watch` - Compile TypeScript in watch mode
+- `pnpm test` - Run all tests with Jest and generate coverage
+- `pnpm test:watch` - Run tests in watch mode
+- `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check code formatting
+- `pnpm lint` - Run ESLint on src/ directory
 
 ### Testing
 
 - Tests are written using Jest with ts-jest preset
 - Test files follow the pattern `*.test.ts`
 - Coverage reports are generated in the `coverage/` directory
-- Run specific test: `npm test -- path/to/file.test.ts`
+- Run specific test: `pnpm test -- path/to/file.test.ts`
 
 ## Architecture
 
@@ -53,7 +53,6 @@ This is a TypeScript CLI tool that provides Git workspace management utilities. 
 - `simple-git` - Git operations
 - `inquirer` - Interactive CLI prompts
 - `commander` - Command-line interface parsing
-- `axios` - HTTP requests for API interactions
 - `@labset/leveldb-registry` - Local database for workspace items
 - `@labset/task-pool-executor` - Concurrent task execution
 
