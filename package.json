@@ -4,6 +4,7 @@
   "description": "git workspace cli extensions",
   "preferGlobal": false,
   "bin": {
+    "git-claude-wt": "dist/bin/git-claude-wt.js",
     "git-list-remote": "dist/bin/git-list-remote.js",
     "git-merged": "dist/bin/git-merged.js",
     "git-recent": "dist/bin/git-recent.js",
