@@ -1,52 +1,19 @@
-import { fileURLToPath } from "node:url";
-import path from "path";
-
-import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import labsetEslint from "@labset-eslint/eslint-plugin";
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import _import from "eslint-plugin-import";
+import importPlugin from "eslint-plugin-import";
+import tseslint from "typescript-eslint";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-export default [
+export default tseslint.config(
   {
     ignores: ["node_modules", "dist", "coverage"],
   },
-  ...fixupConfigRules(
-    compat.extends(
-      "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:import/recommended",
-    ),
-  ),
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  importPlugin.flatConfigs.recommended,
   {
     plugins: {
-      "@typescript-eslint": fixupPluginRules(typescriptEslint),
-      import: fixupPluginRules(_import),
       "@labset-eslint": labsetEslint,
     },
-    languageOptions: {
-      parser: tsParser,
-      ecmaVersion: 2018,
-      sourceType: "module",
-
-      parserOptions: {
-        ecmaFeatures: {
-          modules: true,
-        },
-      },
-    },
-
     settings: {
       "import/resolver": {
         node: {
@@ -57,7 +24,6 @@ export default [
         },
       },
     },
-
     rules: {
       "@labset-eslint/license-notice": [
         "error",
@@ -93,4 +59,4 @@ export default [
       ],
     },
   },
-];
+);
