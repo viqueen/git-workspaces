@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import axios from 'axios';
-
 import { fromInput, Item } from '../../lib';
 
 type ItemCallback = (item: Item) => Promise<Item>;
@@ -45,24 +43,21 @@ const bitbucketCloudItemStream = async ({
     workspace,
     handler
 }: BitbucketCloudItemStreamProps) => {
-    const client = axios.create({
-        baseURL: `https://api.bitbucket.org`,
-        auth: {
-            username: bitbucketCloudUsername,
-            password: bitbucketCloudToken
-        }
-    });
+    const credentials = btoa(
+        `${bitbucketCloudUsername}:${bitbucketCloudToken}`
+    );
+    const streamUrl = `https://api.bitbucket.org/2.0/repositories/${namespace}`;
 
-    const streamUrl = `/2.0/repositories/${namespace}`;
+    const execute = async (url: string | undefined): Promise<void> => {
+        if (!url) return Promise.resolve();
 
-    const execute = async (params: unknown | undefined): Promise<void> => {
-        if (!params) return Promise.resolve();
-
-        const response = await client.get<BitbucketCloudItemsResponse>(
-            streamUrl,
-            { params }
-        );
-        const items = response.data.values.map(({ links }) => {
+        const response = await fetch(url, {
+            headers: {
+                Authorization: `Basic ${credentials}`
+            }
+        });
+        const data: BitbucketCloudItemsResponse = await response.json();
+        const items = data.values.map(({ links }) => {
             const sshUrl = links.clone.find((l) => l.name === 'ssh')?.href;
             return sshUrl
                 ? fromInput({ urlConnection: sshUrl, workspace })
@@ -75,10 +70,11 @@ const bitbucketCloudItemStream = async ({
                 console.info({ workspace, urlConnection })
             );
         }
-        // TODO: handle pagination
+
+        return execute(data.next);
     };
 
-    await execute({});
+    await execute(streamUrl);
 };
 
 export { bitbucketCloudItemStream };

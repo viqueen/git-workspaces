@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import axios from 'axios';
-
 import { fromInput, Item, Link, linkParser } from '../../lib';
 
 type ItemCallback = (item: Item) => Promise<Item>;
@@ -45,19 +43,25 @@ const githubItemStream = async ({
     handler,
     workspace
 }: GithubItemStreamProps) => {
-    const client = axios.create({
-        baseURL: `https://api.github.com`,
-        auth: {
-            username: githubUsername,
-            password: githubPersonalToken
-        }
-    });
+    const credentials = btoa(`${githubUsername}:${githubPersonalToken}`);
 
-    const execute = async (params: unknown | undefined): Promise<void> => {
+    const execute = async (
+        params: Record<string, string> | undefined
+    ): Promise<void> => {
         if (!params) return Promise.resolve();
 
-        const response = await client.get<GithubItem[]>(streamUrl, { params });
-        const items = response.data
+        const url = new URL(`https://api.github.com${streamUrl}`);
+        Object.entries(params).forEach(([key, value]) =>
+            url.searchParams.set(key, value)
+        );
+
+        const response = await fetch(url, {
+            headers: {
+                Authorization: `Basic ${credentials}`
+            }
+        });
+        const data: GithubItem[] = await response.json();
+        const items = data
             .filter(githubItemFilter)
             .map(({ ssh_url }) =>
                 fromInput({ urlConnection: ssh_url, workspace })
@@ -71,15 +75,16 @@ const githubItemStream = async ({
             );
         }
 
-        const linkHeader = response.headers.link || '';
+        const linkHeader = response.headers.get('link') || '';
         const nextLinks = linkHeader
             .split(',')
             .map(linkParser)
             .filter((link: Link | undefined) => {
                 return link?.rel === 'next';
             });
-        const nextParams =
-            nextLinks.length === 1 ? nextLinks[0]?.params : undefined;
+        const nextParams = nextLinks.length === 1
+            ? (nextLinks[0]?.params as Record<string, string>)
+            : undefined;
         return execute(nextParams);
     };
 
