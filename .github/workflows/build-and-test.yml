@@ -9,18 +9,10 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: "npm"
-      - run: yarn
-      - run: yarn format:check
-      - run: yarn lint
-      - run: yarn test
-      - run: yarn build
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - uses: actions/checkout@v6
+      - uses: jdx/mise-action@v2
+      - run: pnpm install
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
