@@ -82,9 +82,10 @@ const githubItemStream = async ({
             .filter((link: Link | undefined) => {
                 return link?.rel === 'next';
             });
-        const nextParams = nextLinks.length === 1
-            ? (nextLinks[0]?.params as Record<string, string>)
-            : undefined;
+        const nextParams =
+            nextLinks.length === 1
+                ? (nextLinks[0]?.params as Record<string, string>)
+                : undefined;
         return execute(nextParams);
     };
 
