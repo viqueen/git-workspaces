@@ -20,7 +20,7 @@ import { leveldbRegistry, Registry } from '@labset/leveldb-registry';
 import camelCase from 'lodash/camelCase';
 import { simpleGit, GitConfigScope } from 'simple-git';
 
-import { Item } from './types';
+import { Item } from '../item';
 
 export type Configuration = {
     workspacesRoot: string;

@@ -15,8 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { listRecentBranches } from '../lib/list-recent-branches';
-import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
+import { listRecentBranches, selectAndDeleteBranches } from '../lib/branches';
 
 const mainBranches =
     /^\d{4}-\d{2}-\d{2} (main|master|production|demo|website|development)$/;

@@ -22,7 +22,7 @@ import {
     withProgram,
     WithProgram
 } from '../lib';
-import { itemStatus } from '../lib/item-status';
+import { itemStatus } from '../lib/item';
 
 const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
     program
