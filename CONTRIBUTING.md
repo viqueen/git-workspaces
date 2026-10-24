@@ -1,37 +1,32 @@
 ## environment
 
-I use **[nvm](https://github.com/nvm-sh/nvm)** to manage my node versions.
+I use **[mise](https://mise.jdx.dev/)** to manage the toolchain. The pinned
+`node` and `pnpm` versions live in [`.mise.toml`](.mise.toml).
 
 ```bash
-brew install nvm
+brew install mise
 ```
 
 ## development setup
 
-- create a fork of the repo, clone it, and install the dependencies
+- create a fork of the repo, clone it, and install the toolchain and dependencies
 
 ```bash
-cd git-workspace
-nvm install
-npm ci
+cd git-workspaces
+mise install
+pnpm install
 ```
 
 - setup git hooks
 
 ```bash
-npx husky install
-```
-
-- invite claude
-
-```bash
-npm run claude
+git config core.hooksPath .husky
 ```
 
 - build it in watch mode
 
 ```bash
-yarn build --watch
+pnpm build:watch
 ```
 
 - you can now use the cli

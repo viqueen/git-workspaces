@@ -24,9 +24,11 @@ npm install @labset/git-workspaces -g
 
 ```bash
 git clone https://github.com/viqueen/git-workspaces.git
-cd git-workspace
-npm install
-npm link
+cd git-workspaces
+mise install
+pnpm install
+pnpm build
+pnpm link --global
 ```
 
 ### use it
