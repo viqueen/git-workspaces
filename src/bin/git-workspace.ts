@@ -15,67 +15,104 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { Command } from 'commander';
+
 import {
+    configureWorkspace,
+    fromInput,
     getConfiguration,
-    itemFilter,
     itemLocation,
-    withProgram,
-    WithProgram
+    itemStatus,
+    listWorkspaceItems,
+    withFilterOptions
 } from '../lib';
-import { itemStatus } from '../lib/item-status';
+import { cloneItemTask, submitItemTasks, syncItemTask } from '../tasks';
 
-const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
-    program
-        .option('--dl, --display-location', 'display location only', false)
-        .option('--dc, --display-connection', 'display connection only', false)
-        .option('--ds, --display-slug', 'display slug only', false)
-        .option('--cl, --cloned', 'display cloned repos only', false)
-        .description('list repos registered on workspace')
-        .action(async (opts) => {
-            const { workspace, namespace, host, slug, keyword, cloned } = opts;
-            await registry
-                .list(itemFilter({ workspace, namespace, host, slug, keyword }))
-                .then(async (items) => {
-                    return await Promise.all(
-                        items.map((item) =>
-                            itemStatus({ workspacesRoot, item })
-                        )
-                    );
-                })
-                .then((itemsWithStatus) => {
-                    const filtered = itemsWithStatus.filter((item) => {
-                        return cloned ? item.status !== null : true;
-                    });
-                    const { displayLocation, displayConnection, displaySlug } =
-                        opts;
-                    const displayOptionEnabled =
-                        displayLocation || displayConnection || displaySlug;
+const program = new Command();
+program.description('manage git workspaces');
 
-                    if (!displayOptionEnabled) {
-                        console.table(filtered, [
-                            'workspace',
-                            'namespace',
-                            'slug',
-                            'status'
-                        ]);
-                        return;
-                    }
+withFilterOptions(program.command('list', { isDefault: true }))
+    .option('--dl, --display-location', 'display location only', false)
+    .option('--dc, --display-connection', 'display connection only', false)
+    .option('--ds, --display-slug', 'display slug only', false)
+    .option('--cl, --cloned', 'display cloned repos only', false)
+    .description('list repos registered on workspace')
+    .action(async (opts) => {
+        const { workspacesRoot, items } = await listWorkspaceItems(opts);
+        const itemsWithStatus = await Promise.all(
+            items.map((item) => itemStatus({ workspacesRoot, item }))
+        );
+        const filtered = itemsWithStatus.filter((item) =>
+            opts.cloned ? item.status !== null : true
+        );
+        const { displayLocation, displayConnection, displaySlug } = opts;
+        const displayOptionEnabled =
+            displayLocation || displayConnection || displaySlug;
 
-                    filtered.forEach((item) => {
-                        if (displayLocation) {
-                            const target = itemLocation({
-                                workspacesRoot,
-                                item
-                            });
-                            console.info(target);
-                        } else if (displayConnection) {
-                            console.info(item.urlConnection);
-                        } else if (displaySlug) {
-                            console.info(item.slug);
-                        }
-                    });
-                });
+        if (!displayOptionEnabled) {
+            console.table(filtered, [
+                'workspace',
+                'namespace',
+                'slug',
+                'status'
+            ]);
+            return;
+        }
+
+        filtered.forEach((item) => {
+            if (displayLocation) {
+                console.info(itemLocation({ workspacesRoot, item }));
+            } else if (displayConnection) {
+                console.info(item.urlConnection);
+            } else if (displaySlug) {
+                console.info(item.slug);
+            }
         });
-};
+    });
 
-getConfiguration().then(withProgram(listRepos)).catch(console.error);
+program
+    .command('add')
+    .description('add repo to workspace')
+    .argument('<urlConnection>')
+    .option('-w, --workspace <workspace>', 'with workspace')
+    .action(async (urlConnection, opts) => {
+        const { registry, workspacesDefault } = await getConfiguration();
+        const workspace = opts.workspace ?? workspacesDefault;
+        const item = fromInput({ urlConnection, workspace });
+        if (!item) return;
+        await registry
+            .add(item)
+            .then(({ workspace, urlConnection }) =>
+                console.info({ workspace, urlConnection })
+            );
+    });
+
+withFilterOptions(program.command('remove'))
+    .description('remove workspace repos')
+    .action(async (opts) => {
+        const { registry, items } = await listWorkspaceItems(opts);
+        await Promise.all(items.map((item) => registry.remove(item.id)));
+    });
+
+withFilterOptions(program.command('clone'))
+    .description('clone workspace repos')
+    .action(async (opts) => {
+        const { workspacesRoot, items } = await listWorkspaceItems(opts);
+        await submitItemTasks(items, cloneItemTask({ workspacesRoot }));
+    });
+
+withFilterOptions(program.command('sync'))
+    .description('sync workspace repos')
+    .action(async (opts) => {
+        const { workspacesRoot, items } = await listWorkspaceItems(opts);
+        await submitItemTasks(items, syncItemTask({ workspacesRoot }));
+    });
+
+program
+    .command('config')
+    .description('configure git workspaces')
+    .action(async () => {
+        await configureWorkspace();
+    });
+
+program.parseAsync(process.argv).catch(console.error);

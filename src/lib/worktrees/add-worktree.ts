@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 /**
  * Copyright 2023 Hasnae Rehioui
  *
@@ -15,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { getConfiguration, itemFilter, withProgram, WithProgram } from '../lib';
+import * as path from 'node:path';
 
-const removeRepos: WithProgram = ({ registry }, program) => {
-    program.description('remove workspace repos').action(async (opts) => {
-        const { workspace, namespace, host, slug, keyword } = opts;
-        const targets = await registry.list(
-            itemFilter({ workspace, namespace, host, slug, keyword })
-        );
-        await Promise.all(targets.map((target) => registry.remove(target.id)));
-    });
+import { simpleGit } from 'simple-git';
+
+import { listWorktrees } from './list-worktrees';
+
+export const addWorktree = async (name: string) => {
+    const worktrees = await listWorktrees();
+    const main = worktrees.find((worktree) => worktree.main);
+    if (!main) return;
+    // Worktrees live in a sibling folder to the repo, named <item>-worktrees.
+    const target = path.join(`${main.path}-worktrees`, name);
+    const output = await simpleGit().raw(['worktree', 'add', target]);
+    console.info(output);
+    return target;
 };
-
-getConfiguration().then(withProgram(removeRepos)).catch(console.error);

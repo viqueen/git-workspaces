@@ -16,9 +16,11 @@
  * limitations under the License.
  */
 
-import { excludeOperationalBranches } from '../lib/exclude-operational-branches';
-import { listRecentBranches } from '../lib/list-recent-branches';
-import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
+import {
+    excludeOperationalBranches,
+    listRecentBranches,
+    selectAndDeleteBranches
+} from '../lib/branches';
 
 listRecentBranches()
     .then(excludeOperationalBranches)

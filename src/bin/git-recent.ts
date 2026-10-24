@@ -15,8 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { listRecentBranches } from '../lib/list-recent-branches';
-import { selectAndCheckoutBranch } from '../lib/select-and-checkout-branch';
+import { listRecentBranches, selectAndCheckoutBranch } from '../lib/branches';
 
 listRecentBranches()
     .then(selectAndCheckoutBranch(/\d{4}-\d{2}-\d{2} (?<branchName>.*)/))

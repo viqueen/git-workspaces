@@ -22,10 +22,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # github-actions does not support semver-specific cooldowns.
     cooldown:
-      semver-minor-days: 3
-      semver-patch-days: 3
-      semver-major-days: 30
+      default-days: 3
     open-pull-requests-limit: 10
     groups:
       minor-and-patch:

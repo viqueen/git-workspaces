@@ -64,12 +64,27 @@ git squashed origin/master
 git tidy
 ```
 
+#### working with worktrees
+
+- add a worktree for the current repo, created under the `<item>-worktrees`
+  sibling folder
+
+```bash
+git work add <name>
+```
+
+- list the current repo worktrees, multi select the ones you want to remove
+
+```bash
+git work remove
+```
+
 #### setup git workspaces
 
 - start by some configuration
 
 ```bash
-git workspace-config
+git workspace config
 ```
 
 it will add the following git global config entries
@@ -82,8 +97,8 @@ git.workspaces.default                  # your default workspace, i.e open-sourc
 - add a repo to your workspace
 
 ```bash
-git workspace-add <urlConnection>         # adds to default workspace
-git workspace-add <urlConnect> -w <name>  # adds to workspace with provided name
+git workspace add <urlConnection>         # adds to default workspace
+git workspace add <urlConnect> -w <name>  # adds to workspace with provided name
 ```
 
 - view your workspace
@@ -96,8 +111,8 @@ git workspace -w <name>   # describes workspace with provided name
 - clone your entire workspace
 
 ```bash
-git workspace-clone
-git workspace-clone -w <name>
+git workspace clone
+git workspace clone -w <name>
 ```
 
 > [!NOTE]

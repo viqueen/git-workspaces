@@ -17,8 +17,10 @@
  */
 import { simpleGit } from 'simple-git';
 
-import { excludeOperationalBranches } from '../lib/exclude-operational-branches';
-import { selectAndDeleteBranches } from '../lib/select-and-delete-branches';
+import {
+    excludeOperationalBranches,
+    selectAndDeleteBranches
+} from '../lib/branches';
 
 const listSquashedBranches = async ({ target }: { target?: string }) => {
     const params = ['--no-contains'];

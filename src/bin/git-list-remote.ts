@@ -17,7 +17,7 @@
  */
 import { simpleGit } from 'simple-git';
 
-import { selectAndCheckoutBranch } from '../lib/select-and-checkout-branch';
+import { selectAndCheckoutBranch } from '../lib/branches';
 
 const listRemoteBranches = async ({ pattern }: { pattern?: string }) => {
     const params = ['--remote'];

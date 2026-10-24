@@ -15,3 +15,4 @@
  */
 export * from './clone-item-task';
 export * from './sync-item-task';
+export * from './submit-item-tasks';
