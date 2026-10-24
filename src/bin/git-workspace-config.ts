@@ -18,13 +18,13 @@
 import * as os from 'os';
 import * as path from 'path';
 
-import { prompt } from 'inquirer';
+import inquirer from 'inquirer';
 import { simpleGit, GitConfigScope } from 'simple-git';
 
 import { Configuration } from '../lib';
 
 const configureGitWorkspaceQuestions = async () => {
-    return prompt([
+    return inquirer.prompt([
         {
             name: 'workspacesRoot',
             type: 'input',
