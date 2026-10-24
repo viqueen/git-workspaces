@@ -64,6 +64,21 @@ git squashed origin/master
 git tidy
 ```
 
+#### working with worktrees
+
+- add a worktree for the current repo, created under the `<item>-worktrees`
+  sibling folder
+
+```bash
+git work add <name>
+```
+
+- list the current repo worktrees, multi select the ones you want to remove
+
+```bash
+git work remove
+```
+
 #### setup git workspaces
 
 - start by some configuration

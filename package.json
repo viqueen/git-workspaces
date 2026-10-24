@@ -10,6 +10,7 @@
     "git-squashed": "dist/bin/git-squashed.js",
     "git-stale": "dist/bin/git-stale.js",
     "git-tidy": "dist/bin/git-tidy.js",
+    "git-work": "dist/bin/git-work.js",
     "git-workspace": "dist/bin/git-workspace.js",
     "git-workspace-add": "dist/bin/git-workspace-add.js",
     "git-workspace-clone": "dist/bin/git-workspace-clone.js",
