@@ -21,7 +21,7 @@ import {
     addWorktree,
     listWorktrees,
     selectAndRemoveWorktrees
-} from '../lib/worktrees';
+} from '../lib';
 
 const program = new Command();
 program.description('manage git worktrees for the current repo');
