@@ -99,8 +99,7 @@ git workspace-clone
 git workspace-clone -w <name>
 ```
 
-- execute a script across your git workspace
-
-```bash
-git workspace-exec <script-file> [args...]
-```
+> [!NOTE]
+> To run scripts or make changes across many repos, use
+> [multi-gitter](https://github.com/lindell/multi-gitter) against your cloned
+> workspace. The built-in `workspace-exec` command has been removed in its favour.
