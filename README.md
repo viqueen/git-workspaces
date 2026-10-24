@@ -1,6 +1,6 @@
 ## git-workspaces
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=viqueen_git-devbox&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=viqueen_git-devbox)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=labset_git-workspaces&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=labset_git-workspaces)
 
 ### install it
 
