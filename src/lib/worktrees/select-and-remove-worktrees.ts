@@ -39,13 +39,14 @@ const selectForRemoveQuestion = async (worktrees: Worktree[]) => {
 };
 
 const selectForRemoveAnswer = async (answer?: { selectedPaths: string[] }) => {
-    if (!answer) return;
-    const output = await Promise.all(
+    if (!answer || answer.selectedPaths.length === 0) return;
+    await Promise.all(
         answer.selectedPaths.map((target) =>
             simpleGit().raw(['worktree', 'remove', target])
         )
     );
-    console.table(output);
+    // `git worktree remove` is silent on success, so report what was removed.
+    console.table(answer.selectedPaths.map((path) => ({ removed: path })));
 };
 
 export const selectAndRemoveWorktrees = async (worktrees: Worktree[]) => {
