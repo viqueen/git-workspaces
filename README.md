@@ -1,7 +1,6 @@
 ## git-workspaces
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=viqueen_git-devbox&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=viqueen_git-devbox)
-[![Known Vulnerabilities](https://snyk.io/test/github/viqueen/git-devbox/badge.svg?targetFile=package.json)](https://snyk.io/test/github/viqueen/git-devbox?targetFile=package.json)
 
 ### install it
 
