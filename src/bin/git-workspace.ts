@@ -26,10 +26,10 @@ import { itemStatus } from '../lib/item-status';
 
 const listRepos: WithProgram = ({ workspacesRoot, registry }, program) => {
     program
-        .option('-dl, --display-location', 'display location only', false)
-        .option('-dc, --display-connection', 'display connection only', false)
-        .option('-ds, --display-slug', 'display slug only', false)
-        .option('-cl, --cloned', 'display cloned repos only', false)
+        .option('--dl, --display-location', 'display location only', false)
+        .option('--dc, --display-connection', 'display connection only', false)
+        .option('--ds, --display-slug', 'display slug only', false)
+        .option('--cl, --cloned', 'display cloned repos only', false)
         .description('list repos registered on workspace')
         .action(async (opts) => {
             const { workspace, namespace, host, slug, keyword, cloned } = opts;
