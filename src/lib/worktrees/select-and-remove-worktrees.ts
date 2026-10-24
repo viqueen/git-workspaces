@@ -22,7 +22,7 @@ const selectForRemoveQuestion = async (worktrees: Worktree[]) => {
     // The main worktree cannot be removed, so it is not offered as a choice.
     const removable = worktrees.filter((worktree) => !worktree.main);
     if (removable.length === 0) return undefined;
-    return inquirer.prompt([
+    return await inquirer.prompt([
         {
             name: 'selectedPaths',
             type: 'checkbox',
