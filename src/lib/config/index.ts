@@ -14,4 +14,6 @@
  * limitations under the License.
  */
 export * from './get-configuration';
-export * from './with-program';
+export * from './configure-workspace';
+export * from './list-workspace-items';
+export * from './with-filter-options';

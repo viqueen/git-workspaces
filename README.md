@@ -84,7 +84,7 @@ git work remove
 - start by some configuration
 
 ```bash
-git workspace-config
+git workspace config
 ```
 
 it will add the following git global config entries
@@ -97,8 +97,8 @@ git.workspaces.default                  # your default workspace, i.e open-sourc
 - add a repo to your workspace
 
 ```bash
-git workspace-add <urlConnection>         # adds to default workspace
-git workspace-add <urlConnect> -w <name>  # adds to workspace with provided name
+git workspace add <urlConnection>         # adds to default workspace
+git workspace add <urlConnect> -w <name>  # adds to workspace with provided name
 ```
 
 - view your workspace
@@ -111,8 +111,8 @@ git workspace -w <name>   # describes workspace with provided name
 - clone your entire workspace
 
 ```bash
-git workspace-clone
-git workspace-clone -w <name>
+git workspace clone
+git workspace clone -w <name>
 ```
 
 > [!NOTE]

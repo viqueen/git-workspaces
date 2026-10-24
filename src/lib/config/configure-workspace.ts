@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 /**
  * Copyright 2023 Hasnae Rehioui
  *
@@ -21,10 +19,8 @@ import * as path from 'path';
 import inquirer from 'inquirer';
 import { simpleGit, GitConfigScope } from 'simple-git';
 
-import { Configuration } from '../lib';
-
-const configureGitWorkspaceQuestions = async () => {
-    return inquirer.prompt([
+export const configureWorkspace = async () => {
+    const answer = await inquirer.prompt([
         {
             name: 'workspacesRoot',
             type: 'input',
@@ -38,12 +34,6 @@ const configureGitWorkspaceQuestions = async () => {
             default: 'projects'
         }
     ]);
-};
-
-const configureGitWorkspaceAnswers = async (
-    answer: Omit<Configuration, 'registry'> | undefined
-) => {
-    if (!answer) return;
     await simpleGit()
         .addConfig(
             'labset.workspaces.root',
@@ -58,7 +48,3 @@ const configureGitWorkspaceAnswers = async (
             GitConfigScope.global
         );
 };
-
-configureGitWorkspaceQuestions()
-    .then(configureGitWorkspaceAnswers)
-    .catch(console.error);

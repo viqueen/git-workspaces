@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 /**
  * Copyright 2023 Hasnae Rehioui
  *
@@ -15,16 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { getConfiguration, itemFilter, withProgram, WithProgram } from '../lib';
+import {
+    CliProgressRunContext,
+    Runnable,
+    withCliProgress
+} from '@labset/task-pool-executor';
 
-const removeRepos: WithProgram = ({ registry }, program) => {
-    program.description('remove workspace repos').action(async (opts) => {
-        const { workspace, namespace, host, slug, keyword } = opts;
-        const targets = await registry.list(
-            itemFilter({ workspace, namespace, host, slug, keyword })
-        );
-        await Promise.all(targets.map((target) => registry.remove(target.id)));
+import { Item } from '../lib';
+
+export const submitItemTasks = <T>(
+    items: Item[],
+    task: (item: Item) => Runnable<T, CliProgressRunContext> | undefined
+) =>
+    withCliProgress((taskPool) => {
+        items
+            .map(task)
+            .forEach((runnable) => runnable && taskPool.submit(runnable));
     });
-};
-
-getConfiguration().then(withProgram(removeRepos)).catch(console.error);

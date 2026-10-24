@@ -17,11 +17,7 @@
  */
 import { Command } from 'commander';
 
-import {
-    addWorktree,
-    listWorktrees,
-    selectAndRemoveWorktrees
-} from '../lib';
+import { addWorktree, listWorktrees, selectAndRemoveWorktrees } from '../lib';
 
 const program = new Command();
 program.description('manage git worktrees for the current repo');
