@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viqueen/git-workspaces.git"
+    "url": "git+https://github.com/labset/git-workspaces.git"
   },
   "files": [
     "dist"
@@ -42,9 +42,9 @@
   "author": "Hasnae R.",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/viqueen/git-workspaces/issues"
+    "url": "https://github.com/labset/git-workspaces/issues"
   },
-  "homepage": "https://github.com/viqueen/git-workspaces#readme",
+  "homepage": "https://github.com/labset/git-workspaces#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@labset-eslint/eslint-plugin": "^1.3.0",
