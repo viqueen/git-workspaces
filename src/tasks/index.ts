@@ -14,5 +14,4 @@
  * limitations under the License.
  */
 export * from './clone-item-task';
-export * from './exec-item-task';
 export * from './sync-item-task';

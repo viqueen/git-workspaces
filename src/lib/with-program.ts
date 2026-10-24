@@ -30,7 +30,7 @@ export const withProgram = (fn: WithProgram) => {
             'with workspace',
             configuration.workspacesDefault
         );
-        program.option('-ns, --namespace <namespace>', 'filter by namespace');
+        program.option('--ns, --namespace <namespace>', 'filter by namespace');
         program.option('-h, --host <host>', 'filter by host');
         program.option('-s, --slug <slug>', 'filter by name or slug');
         program.option('-k, --keyword <keyword>', 'filter by keyword');

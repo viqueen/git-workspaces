@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { prompt } from 'inquirer';
+import inquirer from 'inquirer';
 import { simpleGit } from 'simple-git';
 
 const selectBranchQuestion = async (branches: string[]) => {
     if (branches.length === 0) return undefined;
-    return prompt([
+    return inquirer.prompt([
         {
             name: 'branchDetails',
-            type: 'list',
+            type: 'select',
             message: 'select branch to switch to',
             choices: branches,
             pageSize: 30
