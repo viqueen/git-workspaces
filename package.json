@@ -22,7 +22,6 @@
     "git-workspace-sync": "dist/bin/git-workspace-sync.js"
   },
   "scripts": {
-    "claude": "claude",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "test": "jest",
