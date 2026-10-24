@@ -36,26 +36,6 @@ const configureGitWorkspaceQuestions = async () => {
             type: 'input',
             message: 'set workspaces.default',
             default: 'projects'
-        },
-        {
-            name: 'githubUsername',
-            type: 'input',
-            message: 'set github username'
-        },
-        {
-            name: 'githubPersonalToken',
-            type: 'password',
-            message: 'set github personal token'
-        },
-        {
-            name: 'bitbucketCloudUsername',
-            type: 'input',
-            message: 'set bitbucket cloud username'
-        },
-        {
-            name: 'bitbucketCloudToken',
-            type: 'password',
-            message: 'set bitbucket cloud token'
         }
     ]);
 };
@@ -74,30 +54,6 @@ const configureGitWorkspaceAnswers = async (
         .addConfig(
             'labset.workspaces.default',
             answer.workspacesDefault,
-            false,
-            GitConfigScope.global
-        )
-        .addConfig(
-            'labset.github.username',
-            answer.githubUsername,
-            false,
-            GitConfigScope.global
-        )
-        .addConfig(
-            'labset.github.personal.token',
-            answer.githubPersonalToken,
-            false,
-            GitConfigScope.global
-        )
-        .addConfig(
-            'labset.bitbucket.cloud.username',
-            answer.bitbucketCloudUsername,
-            false,
-            GitConfigScope.global
-        )
-        .addConfig(
-            'labset.bitbucket.cloud.token',
-            answer.bitbucketCloudToken,
             false,
             GitConfigScope.global
         );

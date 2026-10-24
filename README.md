@@ -76,8 +76,6 @@ it will add the following git global config entries
 ```text
 git.workspaces.root                     # where you want all your workspaces to be
 git.workspaces.default                  # your default workspace, i.e open-source vs work
-git.workspaces.github.username          # your github username
-git.workspaces.github.personal.token    # your github personal access token
 ```
 
 - add a repo to your workspace
@@ -99,22 +97,6 @@ git workspace -w <name>   # describes workspace with provided name
 ```bash
 git workspace-clone
 git workspace-clone -w <name>
-```
-
-- sync workspace with GitHub, it requires GitHub username and token to be set when working with private repos
-
-```bash
-git sync-github                               # logged in user repos
-git sync-github --user <namespace>
-git sync-github --org <namespace>
-git sync-github --org <namespace> --archived  # include archived
-git sync-github --user <namespace> --forked   # include forked
-```
-
-- sync workspace with Bitbucket Cloud, it requires Bitbucket username and token to be configured
-
-```bash
-git sync-bitbucket --namespace <namespace>
 ```
 
 - execute a script across your git workspace
