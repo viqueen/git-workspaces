@@ -25,14 +25,6 @@ export default tseslint.config(
       },
     },
     rules: {
-      "@labset-eslint/license-notice": [
-        "error",
-        {
-          license: "Apache-2.0",
-          copyRightYear: "2025",
-          copyRightName: "Hasnae Rehioui",
-        },
-      ],
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
